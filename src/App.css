@@ -1,38 +1,113 @@
-.App {
-  text-align: center;
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Poppins', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.navbar {
+  background-color: black;
+  padding: 15px 20px;
+}
+
+.nav-link {
+  color: #A7E6FF; /* Light blue for normal state */
+  text-decoration: none; /* Remove underline */
+}
+
+.nav-link:hover {
+  color: red; /* Red when hovered */
+}
+
+.search-btn {
+  border: none; /* Remove border */
+  background: transparent; /* Set background to transparent */
+  color: white; /* Set text color */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  display: flex; /* Align items properly */
+  align-items: center; /* Center items */
+}
+
+.nav-link:hover {
+  color: red;
+}
+
+.navbar-toggler {
+  border: none;
+  background: transparent;
+}
+
+.hamburger-icon {
+  width: 30px;
+  height: auto;
+}
+
+.navbar-toggler {
+  border: none !important; /* Force remove any borders */
+  outline: none; /* Remove any outline */
+  box-shadow: none; /* Remove any box-shadow if present */
+}
+
+.navbar-toggler:focus {
+  box-shadow: none; /* Prevent box-shadow on focus */
+}
+
+
+.search-btn:hover {
+  transform: scale(1.1); /* Scale up slightly on hover */
+}
+
+.search-input {
+  width: 0;
+  opacity: 0;
+  transition: width 0.5s ease, opacity 0.5s ease; /* Adjust duration for smoother animation */
+}
+
+.search-input.active {
+  width: 300px;
+  opacity: 1;
+  border-radius: 10px;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-input:focus {
+  border: 2px solid #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.logo-icon {
+  width: 25px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.mototyres-logo {
+  width: 100px; /* Adjust logo width as necessary */
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.nav-item {
+  padding: 10px 15px;
+}
+
+/* Mobile View Styles */
+@media (max-width: 768px) {
+  .navbar .navbar-nav {
+      text-align: center;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  .search-btn {
+      margin: 0 10px;
   }
 }
