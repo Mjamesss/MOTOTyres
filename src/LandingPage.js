@@ -109,7 +109,7 @@ function LandingPage() {
                             <ul className="list-unstyled mt-2">
                                 <li className="mb-5"><i className="bi bi-geo-alt"></i>(+63)915-269-8366</li>
                                 <li className="mb-5"><i className="bi bi-geo-alt"></i>Blk 27 Lot2 Saranay Road, Bagumbong, Caloocan dity</li>
-                                <li className="mb-5"><i className="bi bi-envelope"></i> support@mototyres.com</li>
+                                <li className="mb-5"><i className="bi bi-envelope"></i> mototyres@gmail.com</li>
                             </ul>
                         </div>
 
@@ -117,12 +117,11 @@ function LandingPage() {
                         <div className="col-md-3 mt-5">
                             <h5>Top Categories</h5>
                             <ul className="list-unstyled">
-                                <li className="mb-2"><a href="#" className="text-white">Tyres</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Rims</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Accessories</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Tools</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Batteries</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Car Care</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">Engine Components</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">Transmission Parts</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">Suspension</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">Braking System</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">Wheels and Tires</a></li>
                                 <br></br>
                                 
                             </ul>
@@ -132,14 +131,12 @@ function LandingPage() {
                         <div className="col-md-3 mt-5">
                             <h5>About Mototyres</h5>
                             <ul className="list-unstyled">
-                                <li className="mb-2"><a href="#" className="text-white">Our Story</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Mission</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Vision</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Values</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Careers</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">News</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Contact Us</a></li>
-                                
+                                <li className="mb-2"><a href="#" className="text-white">Shop Product</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">Term of Use</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">Privacy Policy</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">FAQ</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">Contact</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">About Us</a></li>
                             </ul>
                         </div>
                         {/* Fourth Column: Follow Us */}
@@ -152,10 +149,6 @@ function LandingPage() {
                         </div>
                     </div>
                     </div>
-
-
-                    
-
                     {/* Footer Bottom */}
                     <div className="text-center mt-4">
                         <p>&copy; 2024 Mototyres. All Rights Reserved.</p>
