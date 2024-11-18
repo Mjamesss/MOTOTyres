@@ -1,22 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css'; // Ensure your styles are correctly imported
 
 function LandingPage() {
-    const toggleSearch = () => {
-        const searchInput = document.getElementById('searchInput');
-        searchInput.classList.toggle('active'); // Toggles the class to trigger animation
+    const [showModal, setShowModal] = useState(false); // Modal visibility state
 
-        // Handle visibility of the input field after animation
-        if (searchInput.classList.contains('active')) {
-            searchInput.style.display = 'inline-block';
-            searchInput.focus();
-        } else {
-            searchInput.value = '';
-            setTimeout(() => {
-                searchInput.style.display = 'none';
-            }, 300); // Allow animation to finish before hiding input
-        }
-    };
+    const toggleModal = () => setShowModal(!showModal); // Toggle modal visibility
+
+    // Close modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
     return (
         <div>
@@ -56,9 +49,9 @@ function LandingPage() {
                             </li>
                         </ul>
 
-                        {/* Desktop Icons */}
+                        {/* Desktop Icons and Log In */}
                         <div className="d-flex align-items-center ms-auto d-none d-lg-flex">
-                            <button className="search-btn" onClick={toggleSearch}>
+                            <button className="search-btn">
                                 <img src="search (2).png" alt="Search" className="search-logo" style={{ width: '25px' }} />
                             </button>
                             <input type="text" id="searchInput" className="search-input" placeholder="Search..." />
@@ -68,35 +61,39 @@ function LandingPage() {
                                 <img src="/heart.png" alt="Wishlist" className="me-2 logo-icon" />
                                 <img src="/shopping-cart.png" alt="Cart" className="logo-icon" />
                                 <img src="/user.png" alt="User" className="logo-icon" />
-                                <span className="nav-link ms-3" style={{ color: 'white' }}>Log In</span>
+                                <span
+                                    className="nav-link ms-3"
+                                    style={{ color: 'white', cursor: 'pointer' }}
+                                    onClick={toggleModal} // Trigger modal toggle
+                                >
+                                    Log In
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </nav>
 
-            
-            <div className="">dito niyo lagay </div>
-            {/* dito niyo lagay gawa using section dapat */}
+            {/* Modal Component */}
+            {showModal && (
+        <div className="modalOverlay" onClick={closeModal}>
+          <div className="modalContainer" onClick={(e) => e.stopPropagation()}>
+            <span className="closeButton" onClick={closeModal}>X</span>
+            <div className="modalContent">
+              <h2>Log In</h2>
+              <input type="email" id="user" placeholder="Enter your username" />
+              <input type="password" id="pass" placeholder="Enter your password" />
+              <button id="enter">Log In</button>
+              <hr />
+              <span id="forgotPassword">Forgot Password?</span><br />
+              <p>Don't have an account? <span id="createAccount">Create account</span></p>
+            </div>
+          </div>
+        </div>
+      )}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            {/* Your additional content (Sections, etc.) */}
+            <div className="">dito niyo lagay</div>
 
             {/* Footer */}
             <footer className="bg-black text-white">
@@ -108,7 +105,7 @@ function LandingPage() {
                             <h5>Customer Support</h5>
                             <ul className="list-unstyled mt-2">
                                 <li className="mb-5"><i className="bi bi-geo-alt"></i>(+63)915-269-8366</li>
-                                <li className="mb-5"><i className="bi bi-geo-alt"></i>Blk 27 Lot2 Saranay Road, Bagumbong, Caloocan dity</li>
+                                <li className="mb-5"><i className="bi bi-geo-alt"></i>Blk 27 Lot2 Saranay Road, Bagumbong, Caloocan city</li>
                                 <li className="mb-5"><i className="bi bi-envelope"></i> mototyres@gmail.com</li>
                             </ul>
                         </div>
@@ -122,8 +119,6 @@ function LandingPage() {
                                 <li className="mb-2"><a href="#" className="text-white">Suspension</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">Braking System</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">Wheels and Tires</a></li>
-                                <br></br>
-                                
                             </ul>
                         </div>
 
@@ -132,23 +127,23 @@ function LandingPage() {
                             <h5>About Mototyres</h5>
                             <ul className="list-unstyled">
                                 <li className="mb-2"><a href="#" className="text-white">Shop Product</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Term of Use</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">Terms of Use</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">Privacy Policy</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">FAQ</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">Contact</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">About Us</a></li>
                             </ul>
                         </div>
+
                         {/* Fourth Column: Follow Us */}
-                    <div className="col md-3 mt-5">
-                        <div className="col-md-12">
-                        <h5>Follow Us</h5>
+                        <div className="col-md-3 mt-5">
+                            <h5>Follow Us</h5>
                             <ul className="list-unstyled">
                                 <li className="mb-2"><a href="#" className="text-white"><i className="bi bi-facebook"></i> Facebook</a></li>
                             </ul>
                         </div>
                     </div>
-                    </div>
+
                     {/* Footer Bottom */}
                     <div className="text-center mt-4">
                         <p>&copy; 2024 Mototyres. All Rights Reserved.</p>

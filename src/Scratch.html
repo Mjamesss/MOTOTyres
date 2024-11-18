@@ -8,49 +8,113 @@
 
 </head>
 <body>
-    <!-- Footer -->
-<!-- Footer -->
-<!-- Footer Section -->
-<!-- Footer Section -->
-<footer class="bg-black text-white py-4">
-    <div class="container">
-      <div class="row">
-        <!-- Container 1 -->
-        <div class="col-md-3 mb-3">
-          <div class="footer-container">
-            <!-- Content for Container 1 -->
-          </div>
-        </div>
-        <!-- Container 2 -->
-        <div class="col-md-3 mb-3">
-          <div class="footer-container">
-            <!-- Content for Container 2 -->
-          </div>
-        </div>
-        <!-- Container 3 -->
-        <div class="col-md-3 mb-3">
-          <div class="footer-container">
-            <!-- Content for Container 3 -->
-          </div>
-        </div>
-        <!-- Container 4 -->
-        <div class="col-md-3 mb-3">
-          <div class="footer-container">
-            <!-- Content for Container 4 -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
-  <!-- Custom CSS for Dashed Line and Styling -->
-  <style>
-    .footer-container {
-      padding: 10px;
-      border: 1px dashed #fff;  /* Dashed border for each container */
-      height: 100%;  /* Ensures the containers take the full height of their columns */
-    }
-  </style>
-  
+<div class="modalContainer">
+  <span id="closeButton">X</span>
+  <div class="modalContent">
+    <h2>Log In</h2>
+    <input type="email" name="" id="user" placeholder="Enter your username">
+    <input type="password" name="" id="pass" placeholder="Enter your password">
+    <button id="enter">Log In</button>
+    <hr>
+    <span id="forgotPassword">Forgot Password?</span><br>
+    <p>Dont Have an account <span id="createAccount">Create account</span></p>
+  </div>
+</div>
+
 </body>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; 
+    background-color: #f5f5f5;
+  }
+  .modalContainer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 60%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: dashed 1px #000000;
+  }
+  .modalContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    height: 100%;
+    width: 100%;
+    border: dashed 1px #000000;
+  }
+  .modalContent h2{
+    margin-bottom: 20px;
+  }
+  #user{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 5px
+  }
+  #pass{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  #enter{
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  #closeButton{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1;
+    text-decoration: none;
+    text-shadow: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    z-index: 1;
+  }
+  #forgotPassword{
+    margin-top: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  hr{
+    margin-bottom: 20px;
+    border-top: 1px solid #ccc;
+  }
+  #createAccount{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  p{
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+</style>
 </html>
