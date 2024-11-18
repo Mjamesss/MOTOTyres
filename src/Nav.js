@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { Link } from 'react-router-dom';
 
-function LandingPage() {
+function PricelistPage() { //file name
     const [showModal, setShowModal] = useState(false); // Modal visibility state
     const toggleModal = () => setShowModal(!showModal); // Toggle modal visibility
     const closeModal = () => setShowModal(false); // Close modal
@@ -11,7 +11,7 @@ function LandingPage() {
         const query = document.getElementById('searchInput').value;
         console.log('Search Query:', query); // You can replace this with actual search functionality
     };
-
+  
     return (
         <div>
             {/* Navbar */}
@@ -37,7 +37,7 @@ function LandingPage() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav mb-2 mb-lg-0">
                     <li className="nav-item">
-                    <a className="nav-link" href="#" style={{ color: 'white' }}>Home</a>
+                    <a className="nav-link" href="/" style={{ color: 'white' }}>Home</a>
                     </li>
                     <li className="nav-item">
                     <a className="nav-link" href="#" style={{ color: 'white' }}>Products</a>
@@ -111,64 +111,14 @@ function LandingPage() {
 
             {/* Your additional content (Sections, etc.) */}
             <div className="">dito niyo lagay</div>
-
-            {/* Footer */}
             <footer className="bg-black text-white">
-                <div className="container">
-                    <div className="row">
-                        {/* First Column: Logo and Customer Support */}
-                        <div className="col-md-3 mt-5">
-                            <img src="mototyres_logo 1.png" alt="Mototyres Logo" className="footer-logo" style={{ width: '150px', height: 'auto' }} />
-                            <h5>Customer Support</h5>
-                            <ul className="list-unstyled mt-2">
-                                <li className="mb-5"><i className="bi bi-geo-alt"></i>(+63)915-269-8366</li>
-                                <li className="mb-5"><i className="bi bi-geo-alt"></i>Blk 27 Lot2 Saranay Road, Bagumbong, Caloocan city</li>
-                                <li className="mb-5"><i className="bi bi-envelope"></i> mototyres@gmail.com</li>
-                            </ul>
-                        </div>
-
-                        {/* Second Column: Top Categories */}
-                        <div className="col-md-3 mt-5">
-                            <h5>Top Categories</h5>
-                            <ul className="list-unstyled">
-                                <li className="mb-2"><a href="#" className="text-white">Engine Components</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Transmission Parts</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Suspension</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Braking System</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Wheels and Tires</a></li>
-                            </ul>
-                        </div>
-
-                        {/* Third Column: About Mototyres */}
-                        <div className="col-md-3 mt-5">
-                            <h5>About Mototyres</h5>
-                            <ul className="list-unstyled">
-                                <li className="mb-2"><a href="#" className="text-white">Shop Product</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Terms of Use</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Privacy Policy</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">FAQ</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">Contact</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">About Us</a></li>
-                            </ul>
-                        </div>
-
-                        {/* Fourth Column: Follow Us */}
-                        <div className="col-md-3 mt-5">
-                            <h5>Follow Us</h5>
-                            <ul className="list-unstyled">
-                                <li className="mb-2"><a href="#" className="text-white"><i className="bi bi-facebook"></i> Facebook</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
                     {/* Footer Bottom */}
                     <div className="text-center mt-4">
                         <p>&copy; 2024 Mototyres. All Rights Reserved.</p>
                     </div>
-                </div>
             </footer>
-        </div>
-    );
+            </div>
+  );
 }
 
-export default LandingPage;
+export default PricelistPage; //filename
