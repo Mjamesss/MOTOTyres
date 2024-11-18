@@ -1,95 +1,126 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
+import './LandingPage.css';
 import { Link } from 'react-router-dom';
+import 'aos/dist/aos.css'; // Import the AOS CSS file
 
 function LandingPage() {
     const [showModal, setShowModal] = useState(false); // Modal visibility state
+    const slidesRef = useRef([]); // Reference for slides
+    const dotsRef = useRef([]); // Reference for dots
+    const [slideIndex, setSlideIndex] = useState(0);
+
     const toggleModal = () => setShowModal(!showModal); // Toggle modal visibility
     const closeModal = () => setShowModal(false); // Close modal
 
-    const handleSearch = () => {
-        const query = document.getElementById('searchInput').value;
-        console.log('Search Query:', query); // You can replace this with actual search functionality
+    // Carousel JS Functions
+    useEffect(() => {
+        const interval = setInterval(() => {
+            showSlides(slideIndex + 1);
+        }, 3000); // Change slide every 3 seconds
+        return () => clearInterval(interval); // Cleanup interval on unmount
+    }, [slideIndex]);
+
+    const showSlides = (n) => {
+        const slides = slidesRef.current;
+        const dots = dotsRef.current;
+
+        if (slides.length === 0) return; // Ensure elements are present
+
+        let newSlideIndex = n;
+        if (n >= slides.length) newSlideIndex = 0;
+        if (n < 0) newSlideIndex = slides.length - 1;
+
+        slides.forEach((slide, index) => {
+            slide.style.display = index === newSlideIndex ? 'block' : 'none';
+        });
+
+        dots.forEach((dot, index) => {
+            dot.className = index === newSlideIndex ? 'dot active' : 'dot';
+        });
+
+        setSlideIndex(newSlideIndex);
+    };
+
+    const currentSlide = (n) => {
+        showSlides(n);
     };
 
     return (
         <div>
             {/* Navbar */}
             <nav className="navbar navbar-expand-lg navbar-dark bg-black">
-            <div className="container-fluid">
-                {/* Hamburger Menu */}
-                <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                >
-                <img src="/hamburger-menu.png" alt="Menu" className="hamburger-icon" />
-                </button>
-
-                {/* Logo */}
-                <img src="/mototyres_logo 1.png" alt="Mototyres Logo" className="mototyres-logo" />
-
-                {/* Collapsible Content */}
-                <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav mb-2 mb-lg-0">
-                    <li className="nav-item">
-                    <a className="nav-link" href="#" style={{ color: 'white' }}>Home</a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="#" style={{ color: 'white' }}>Products</a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="#" style={{ color: 'white' }}>Categories</a>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="/PricelistPage" className="nav-link" style={{ color: 'white' }}>
-                        Pricelist
-                    </Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="/" className="nav-link" style={{ color: 'white' }}>
-                        Me
-                    </Link>
-                    </li>
-                    <input
-                    type="text"
-                    id="searchInputMobile"
-                    className="search-input"
-                    placeholder="Search..."
-                />
-                </ul>
-                </div>
-
-                {/* Search and Log In in Mobile View (Outside of Hamburger) */}
-                <div className="d-flex align-items-center ms-auto d-lg-none">
-                <div className="d-flex align-items-center ms-5">
-                    <span
-                    className="nav-link ms-3"
-                    style={{ color: 'white', cursor: 'pointer' }}
-                    onClick={toggleModal} // Trigger modal toggle
+                <div className="container-fluid">
+                    {/* Hamburger Menu */}
+                    <button
+                        className="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
                     >
-                    Log In
-                    </span>
-                </div>
-                </div>
-                <div className="d-flex align-items-center ms-5" id="noneDisplay">
-                    <span
-                    className="nav-link ms-3"
-                    style={{ color: 'white', cursor: 'pointer' }}
-                    onClick={toggleModal} // Trigger modal toggle
-                    >
-                    Log In
-                    </span>
-                </div>
-                
+                        <img src="/hamburger-menu.png" alt="Menu" className="hamburger-icon" />
+                    </button>
 
-            </div>
+                    {/* Logo */}
+                    <img src="/mototyres_logo 1.png" alt="Mototyres Logo" className="mototyres-logo" />
+
+                    {/* Collapsible Content */}
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <a className="nav-link" href="#" style={{ color: 'white' }}>Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#" style={{ color: 'white' }}>Products</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#" style={{ color: 'white' }}>Categories</a>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/PricelistPage" className="nav-link" style={{ color: 'white' }}>
+                                    Pricelist
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/" className="nav-link" style={{ color: 'white' }}>
+                                    Me
+                                </Link>
+                            </li>
+                            <input
+                                type="text"
+                                id="searchInputMobile"
+                                className="search-input"
+                                placeholder="Search..."
+                            />
+                        </ul>
+                    </div>
+
+                    {/* Search and Log In in Mobile View (Outside of Hamburger) */}
+                    <div className="d-flex align-items-center ms-auto d-lg-none">
+                        <div className="d-flex align-items-center ms-5">
+                            <span
+                                className="nav-link ms-3"
+                                style={{ color: 'white', cursor: 'pointer' }}
+                                onClick={toggleModal} // Trigger modal toggle
+                            >
+                                Log In
+                            </span>
+                        </div>
+                    </div>
+                    <div className="d-flex align-items-center ms-5" id="noneDisplay">
+                        <span
+                            className="nav-link ms-3"
+                            style={{ color: 'white', cursor: 'pointer' }}
+                            onClick={toggleModal} // Trigger modal toggle
+                        >
+                            Log In
+                        </span>
+                    </div>
+                </div>
             </nav>
-
 
             {/* Modal Component */}
             {showModal && (
@@ -109,8 +140,29 @@ function LandingPage() {
                 </div>
             )}
 
-            {/* Your additional content (Sections, etc.) */}
-            <div className="">dito niyo lagay</div>
+            {/* carousel */}
+            <section className="slideshow-container mt-5">
+                {['carouselDummy1.png', 'carouselDummy2.png', 'carouselDummy3.png', 'carouselDummy4.png'].map((src, index) => (
+                    <div
+                        className="mySlides"
+                        key={index}
+                        ref={(el) => (slidesRef.current[index] = el)}
+                        style={{ display: index === 0 ? 'block' : 'none' }}
+                    >
+                        <img src={src} alt={`Slide ${index + 1}`} />
+                        <div className="dots-container">
+                            {[0, 1, 2, 3].map((_, dotIndex) => (
+                                <span
+                                    key={dotIndex}
+                                    className={`dot${dotIndex === 0 ? ' active' : ''}`}
+                                    onClick={() => currentSlide(dotIndex)}
+                                    ref={(el) => (dotsRef.current[dotIndex] = el)}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </section>
 
             {/* Footer */}
             <footer className="bg-black text-white">
@@ -148,23 +200,23 @@ function LandingPage() {
                                 <li className="mb-2"><a href="#" className="text-white">Privacy Policy</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">FAQ</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">Contact</a></li>
-                                <li className="mb-2"><a href="#" className="text-white">About Us</a></li>
+                                <li className="mb-2"><a href="#" className="text-white">Sales</a></li>
                             </ul>
                         </div>
 
-                        {/* Fourth Column: Follow Us */}
+                        {/* Fourth Column: Social Media */}
                         <div className="col-md-3 mt-5">
                             <h5>Follow Us</h5>
                             <ul className="list-unstyled">
-                                <li className="mb-2"><a href="#" className="text-white"><i className="bi bi-facebook"></i> Facebook</a></li>
+                                <li><a href="#" className="text-white"><i className="bi bi-facebook"></i> Facebook</a></li>
+                                <li><a href="#" className="text-white"><i className="bi bi-twitter"></i> Twitter</a></li>
+                                <li><a href="#" className="text-white"><i className="bi bi-instagram"></i> Instagram</a></li>
+                                <li><a href="#" className="text-white"><i className="bi bi-youtube"></i> YouTube</a></li>
                             </ul>
                         </div>
                     </div>
-
-                    {/* Footer Bottom */}
-                    <div className="text-center mt-4">
-                        <p>&copy; 2024 Mototyres. All Rights Reserved.</p>
-                    </div>
+                    <hr className="bg-white" />
+                    <p className="text-center pb-3">&copy; 2024 Mototyres. All rights reserved.</p>
                 </div>
             </footer>
         </div>

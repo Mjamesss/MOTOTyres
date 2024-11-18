@@ -183,6 +183,7 @@ body {
   .navbar-nav .nav-item {
     padding: 0 20px; /* Increase spacing for larger screens */
   }
+  
 }
 
 /* Modal Overlay */
@@ -306,3 +307,11 @@ p {
   }
 }
 
+@media(min-width: 782px) and (max-width:990px){
+  
+  #noneDisplay{
+    display: none;
+    visibility: hidden;
+    
+  }
+}
