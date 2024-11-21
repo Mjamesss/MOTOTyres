@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import './LandingPage.css';
 import { Link } from 'react-router-dom';
+import AOS from 'aos'; // Correctly import AOS
 import 'aos/dist/aos.css'; // Import the AOS CSS file
+
 
 function LandingPage() {
     const [showModal, setShowModal] = useState(false); // Modal visibility state
@@ -12,6 +14,15 @@ function LandingPage() {
 
     const toggleModal = () => setShowModal(!showModal); // Toggle modal visibility
     const closeModal = () => setShowModal(false); // Close modal
+
+    // Initialize AOS inside useEffect hook (this is the correct place)
+    useEffect(() => {
+        AOS.init({
+            duration: 1200, // Animation duration in milliseconds
+            offset: 200, //
+            once: true, // Animation should happen only once
+        });
+    }, []); // Empty dependency array ensures this runs only once when component mounts
 
     // Carousel JS Functions
     useEffect(() => {
@@ -46,6 +57,36 @@ function LandingPage() {
         showSlides(n);
     };
 
+    //top seller section js function
+    const sliderContainerRef = useRef(null);
+    const [currentScrollPosition, setCurrentScrollPosition] = useState(0);
+    const itemWidth = 230; // Approximate item width + margin
+    const visibleItems = 4;
+
+    const handleScroll = (direction) => {
+        const maxScrollPosition =
+        (sliderContainerRef.current.children.length - visibleItems) * itemWidth;
+
+        if (direction === "left") {
+        setCurrentScrollPosition((prev) => Math.max(prev - itemWidth * visibleItems, 0));
+        } else {
+        setCurrentScrollPosition((prev) =>
+            Math.min(prev + itemWidth * visibleItems, maxScrollPosition)
+        );
+        }
+
+        sliderContainerRef.current.style.transform = `translateX(-${currentScrollPosition}px)`;
+    };
+
+    const toggleHeart = (buttonIndex) => {
+        setHeartStates((prev) =>
+        prev.map((state, idx) => (idx === buttonIndex ? !state : state))
+        );
+    };
+
+    const [heartStates, setHeartStates] = useState(
+        Array(5).fill(false) // 5 items with default heart states as unclicked
+    );
     return (
         <div>
             {/* Navbar */}
@@ -124,7 +165,7 @@ function LandingPage() {
 
             {/* Modal Component */}
             {showModal && (
-                <div className="modalOverlay" onClick={closeModal}>
+                <div className="modalOverlay" data-aos="fade-up" onClick={closeModal}>
                     <div className="modalContainer" onClick={(e) => e.stopPropagation()}>
                         <span className="closeButton" onClick={closeModal}>X</span>
                         <div className="modalContent">
@@ -141,7 +182,7 @@ function LandingPage() {
             )}
 
             {/* carousel */}
-            <section className="slideshow-container mt-5">
+            <section className="slideshow-container mt-5" data-aos="fade-up" data-aos-duration="1000"> 
                 {['carouselDummy1.png', 'carouselDummy2.png', 'carouselDummy3.png', 'carouselDummy4.png'].map((src, index) => (
                     <div
                         className="mySlides"
@@ -162,6 +203,86 @@ function LandingPage() {
                         </div>
                     </div>
                 ))}
+            </section>
+
+            {/* 3 Brands */}
+            <section className="brandsSection mt-5">
+            <div className="container">
+                <div className="row g-5">
+                {/* Brand 1 */}
+                <div className="col-12 col-sm-6 col-md-4 mb-4" data-aos="fade-up">
+                    <div className="brand">
+                    <img src="/brandDummy.png" alt="Brand 1" className="brandImg" />
+                    <button className="shopNowButton">Shop Now</button>
+                    </div>
+                </div>
+                {/* Brand 2 */}
+                <div className="col-12 col-sm-6 col-md-4 mb-4" data-aos="fade-up">
+                    <div className="brand">
+                    <img src="/brandDummy.png" alt="Brand 2" className="brandImg" />
+                    <button className="shopNowButton">Shop Now</button>
+                    </div>
+                </div>
+                {/* Brand 3 */}
+                <div className="col-12 col-sm-6 col-md-4 mb-4" data-aos="fade-up">
+                    <div className="brand">
+                    <img src="/brandDummy.png" alt="Brand 3" className="brandImg" />
+                    <button className="shopNowButton">Shop Now</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </section>
+
+
+            {/* Top Sellers */}
+            <section className="itemSlider mt-5">
+            {/* Left Scroll Button */}
+            <button className="scrollButton leftScroll" onClick={() => handleScroll("left")}>
+                <img src="right-arrow.png" alt="Scroll Left" />
+            </button>
+
+            <div className="itemSliderWrapper">
+            <h3 className="mt-2">Top Seller</h3>
+            <div className="itemSliderContainer" ref={sliderContainerRef}>
+                {Array(5)
+                .fill()
+                .map((_, index) => (
+                    <div key={index} className="topSellerItem">
+                    <img
+                        src="/topseller.jpg"
+                        alt={`Product ${index + 1}`}
+                        className="img-fluid"
+                        id="imgSizing"
+                    />
+                    <h5 className="mt-3 pr-2">
+                        ₱3,499.00{" "}
+                        {index === 0 && (
+                        <span id="discountedPrice">&nbsp;&nbsp;₱5,780.00</span>
+                        )}
+                    </h5>
+                    <p>Toyota Yamaha</p>
+                    <button id="addToCartButton">Add to Cart</button>
+                    <button
+                        id="heartButton"
+                        onClick={() => toggleHeart(index)}
+                        className={heartStates[index] ? "clicked" : ""}
+                    >
+                        <img
+                        src={heartStates[index] ? "/assets/fillHeart.png" : "/assets/love.png"}
+                        alt="Heart Icon"
+                        />
+                    </button>
+                    </div>
+                ))}
+            </div>
+            </div>
+
+
+            {/* Right Scroll Button */}
+            <button className="scrollButton rightScroll" onClick={() => handleScroll("right")}>
+                <img src="right-arrow.png" alt="Scroll Right" />
+            </button>
             </section>
 
             {/* Footer */}
@@ -219,6 +340,7 @@ function LandingPage() {
                     <p className="text-center pb-3">&copy; 2024 Mototyres. All rights reserved.</p>
                 </div>
             </footer>
+            
         </div>
     );
 }
