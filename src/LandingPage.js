@@ -6,6 +6,7 @@ import AOS from 'aos'; // Correctly import AOS
 import 'aos/dist/aos.css'; // Import the AOS CSS file
 
 
+
 function LandingPage() {
     const [showModal, setShowModal] = useState(false); // Modal visibility state
     const slidesRef = useRef([]); // Reference for slides
@@ -57,36 +58,62 @@ function LandingPage() {
         showSlides(n);
     };
 
-    //top seller section js function
-    const sliderContainerRef = useRef(null);
-    const [currentScrollPosition, setCurrentScrollPosition] = useState(0);
-    const itemWidth = 230; // Approximate item width + margin
+    // Top Sellers Section
+    const topSellerSliderContainer = useRef(null);
+    const newArrivalSliderContainer = useRef(null);
+    
+    const [topSellerCurrentScrollPosition, setTopSellerCurrentScrollPosition] = useState(0);
+    const [newArrivalCurrentScrollPosition, setNewArrivalCurrentScrollPosition] = useState(0);
+    
+    const itemWidth = 200 + 30; // Item width + margin
     const visibleItems = 4;
+    
+    const handleTopSellerScroll = (direction) => {
+        const sliderContainer = topSellerSliderContainer.current;
+        const maxScrollPosition = (sliderContainer.children.length - visibleItems) * itemWidth;
+        let newScrollPosition = topSellerCurrentScrollPosition;
 
-    const handleScroll = (direction) => {
-        const maxScrollPosition =
-        (sliderContainerRef.current.children.length - visibleItems) * itemWidth;
-
-        if (direction === "left") {
-        setCurrentScrollPosition((prev) => Math.max(prev - itemWidth * visibleItems, 0));
-        } else {
-        setCurrentScrollPosition((prev) =>
-            Math.min(prev + itemWidth * visibleItems, maxScrollPosition)
-        );
+        if (direction === 'left') {
+        newScrollPosition = Math.max(newScrollPosition - itemWidth * visibleItems, 0);
+        } else if (direction === 'right') {
+        newScrollPosition = Math.min(newScrollPosition + itemWidth * visibleItems, maxScrollPosition);
         }
 
-        sliderContainerRef.current.style.transform = `translateX(-${currentScrollPosition}px)`;
+        setTopSellerCurrentScrollPosition(newScrollPosition);
+        sliderContainer.style.transform = `translateX(-${newScrollPosition}px)`;
     };
 
-    const toggleHeart = (buttonIndex) => {
-        setHeartStates((prev) =>
-        prev.map((state, idx) => (idx === buttonIndex ? !state : state))
-        );
+    const handleNewArrivalScroll = (direction) => {
+        const sliderContainer = newArrivalSliderContainer.current;
+        const maxScrollPosition = (sliderContainer.children.length - visibleItems) * itemWidth;
+        let newScrollPosition = newArrivalCurrentScrollPosition;
+
+        if (direction === 'left') {
+        newScrollPosition = Math.max(newScrollPosition - itemWidth * visibleItems, 0);
+        } else if (direction === 'right') {
+        newScrollPosition = Math.min(newScrollPosition + itemWidth * visibleItems, maxScrollPosition);
+        }
+
+        setNewArrivalCurrentScrollPosition(newScrollPosition);
+        sliderContainer.style.transform = `translateX(-${newScrollPosition}px)`;
     };
 
-    const [heartStates, setHeartStates] = useState(
-        Array(5).fill(false) // 5 items with default heart states as unclicked
-    );
+    const [heartStatesTs, setHeartStatesTs] = useState([false, false, false, false, false]);
+
+    const toggleHeartTs = (index) => {
+        const updatedStates = [...heartStatesTs];
+        updatedStates[index] = !updatedStates[index];
+        setHeartStatesTs(updatedStates);
+    };
+
+    const [heartStatesNa, setHeartStatesNa] = useState([false, false, false, false, false]);
+    const toggleHeartNa = (index) => {
+        const updatedStates = [...heartStatesNa];
+        updatedStates[index] = !updatedStates[index];
+        setHeartStatesNa(updatedStates);
+    };
+
+  
     return (
         <div>
             {/* Navbar */}
@@ -237,63 +264,80 @@ function LandingPage() {
 
             {/* Top Sellers */}
             <section className="itemSlider mt-5">
-            {/* Left Scroll Button */}
-            <button className="scrollButton leftScroll" onClick={() => handleScroll("left")}>
-                <img src="right-arrow.png" alt="Scroll Left" />
+            <button className="scrollButton leftScroll" onClick={() => handleTopSellerScroll('left')}>
+            <img src="right-arrow.png" alt="Scroll Left" />
             </button>
-
             <div className="itemSliderWrapper">
             <h3 className="mt-2">Top Seller</h3>
-            <div className="itemSliderContainer" ref={sliderContainerRef}>
-                {Array(5)
-                .fill()
-                .map((_, index) => (
-                    <div key={index} className="topSellerItem">
-                    <img
-                        src="/topseller.jpg"
-                        alt={`Product ${index + 1}`}
-                        className="img-fluid"
-                        id="imgSizing"
-                    />
-                    <h5 className="mt-3 pr-2">
-                        ₱3,499.00{" "}
-                        {index === 0 && (
-                        <span id="discountedPrice">&nbsp;&nbsp;₱5,780.00</span>
-                        )}
-                    </h5>
+            <div className="itemSliderContainer" ref={topSellerSliderContainer}>
+                {Array(10).fill().map((_, index) => (
+                <div key={index} className="topSellerItem">
+                    <img src="topseller.jpg" alt={`Product ${index + 1}`} className="img-fluid" id="imgSizing" />
+                    <h5 className="mt-3 pr-2">₱3,499.00</h5>
                     <p>Toyota Yamaha</p>
                     <button id="addToCartButton">Add to Cart</button>
                     <button
-                        id="heartButton"
-                        onClick={() => toggleHeart(index)}
-                        className={heartStates[index] ? "clicked" : ""}
-                    >
-                        <img
-                        src={heartStates[index] ? "/assets/fillHeart.png" : "/assets/love.png"}
-                        alt="Heart Icon"
+                    id="heartButton"
+                    onClick={() => toggleHeartTs(index)}
+                    className={heartStatesTs[index] ? "clicked" : ""}
+                >
+                <img
+                    src={heartStatesTs[index] ? "fillHeart.png" : "love.png"}
+                    alt="Heart Icon"
                         />
                     </button>
-                    </div>
+
+                </div>
                 ))}
             </div>
             </div>
-
-
-            {/* Right Scroll Button */}
-            <button className="scrollButton rightScroll" onClick={() => handleScroll("right")}>
-                <img src="right-arrow.png" alt="Scroll Right" />
+            <button className="scrollButton rightScroll" onClick={() => handleTopSellerScroll('right')}>
+            <img src="right-arrow.png" alt="Scroll Right" />
             </button>
-            </section>
+        </section>
+
+        {/* New Arrivals Section */}
+        <section className="itemSlider mt-5">
+            <button className="scrollButton leftScroll" onClick={() => handleNewArrivalScroll('left')}>
+            <img src="right-arrow.png" alt="Scroll Left" />
+            </button>
+            <div className="itemSliderWrapper">
+            <h3 className="mt-2">New Arrivals</h3>
+            <div className="itemSliderContainer" ref={newArrivalSliderContainer}>
+                {Array(2).fill().map((_, index) => (
+                <div key={index} className="topSellerItem">
+                    <img src="topseller.jpg" alt={`Product ${index + 1}`} className="img-fluid" id="imgSizing" />
+                    <h5 className="mt-3 pr-2">₱3,499.00</h5>
+                    <p>Toyota Yamaha</p>
+                    <button id="addToCartButton">Add to Cart</button>
+                    <button
+                    id="heartButton"
+                    onClick={() => toggleHeartNa(index)}
+                    className={heartStatesNa[index] ? "clicked" : ""}
+                >
+                <img
+                    src={heartStatesNa[index] ? "fillHeart(2).png" : "love(2).png"}
+                    alt="Heart Icon"
+                        />
+                    </button>
+                </div>
+                ))}
+            </div>
+            </div>
+            <button className="scrollButton rightScroll" onClick={() => handleNewArrivalScroll('right')}>
+            <img src="right-arrow.png" alt="Scroll Right" />
+            </button>
+        </section>
 
             {/* Footer */}
-            <footer className="bg-black text-white">
+            <footer className="bg-black text-white mt-5">
                 <div className="container">
                     <div className="row">
                         {/* First Column: Logo and Customer Support */}
                         <div className="col-md-3 mt-5">
-                            <img src="mototyres_logo 1.png" alt="Mototyres Logo" className="footer-logo" style={{ width: '150px', height: 'auto' }} />
-                            <h5>Customer Support</h5>
-                            <ul className="list-unstyled mt-2">
+                            <img src="mototyres_logo 1.png" alt="Mototyres Logo" data-aos="fade-up" className="footer-logo" style={{ width: '150px', height: 'auto' }} />
+                            <h5 data-aos="fade-up">Customer Support</h5>
+                            <ul className="list-unstyled mt-2" data-aos="fade-up">
                                 <li className="mb-5"><i className="bi bi-geo-alt"></i>(+63)915-269-8366</li>
                                 <li className="mb-5"><i className="bi bi-geo-alt"></i>Blk 27 Lot2 Saranay Road, Bagumbong, Caloocan city</li>
                                 <li className="mb-5"><i className="bi bi-envelope"></i> mototyres@gmail.com</li>
@@ -302,8 +346,8 @@ function LandingPage() {
 
                         {/* Second Column: Top Categories */}
                         <div className="col-md-3 mt-5">
-                            <h5>Top Categories</h5>
-                            <ul className="list-unstyled">
+                            <h5 data-aos="fade-up">Top Categories</h5>
+                            <ul className="list-unstyled" data-aos="fade-up">
                                 <li className="mb-2"><a href="#" className="text-white">Engine Components</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">Transmission Parts</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">Suspension</a></li>
@@ -314,8 +358,8 @@ function LandingPage() {
 
                         {/* Third Column: About Mototyres */}
                         <div className="col-md-3 mt-5">
-                            <h5>About Mototyres</h5>
-                            <ul className="list-unstyled">
+                            <h5 data-aos="fade-up">About Mototyres</h5>
+                            <ul className="list-unstyled" data-aos="fade-up">
                                 <li className="mb-2"><a href="#" className="text-white">Shop Product</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">Terms of Use</a></li>
                                 <li className="mb-2"><a href="#" className="text-white">Privacy Policy</a></li>
@@ -326,9 +370,9 @@ function LandingPage() {
                         </div>
 
                         {/* Fourth Column: Social Media */}
-                        <div className="col-md-3 mt-5">
-                            <h5>Follow Us</h5>
-                            <ul className="list-unstyled">
+                        <div className="col-md-3 mt-5" >
+                            <h5 data-aos="fade-up">Follow Us</h5>
+                            <ul className="list-unstyled" data-aos="fade-up">
                                 <li><a href="#" className="text-white"><i className="bi bi-facebook"></i> Facebook</a></li>
                                 <li><a href="#" className="text-white"><i className="bi bi-twitter"></i> Twitter</a></li>
                                 <li><a href="#" className="text-white"><i className="bi bi-instagram"></i> Instagram</a></li>

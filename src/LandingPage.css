@@ -68,7 +68,7 @@
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.2);
   }
   
   .brandImg {
@@ -109,23 +109,23 @@
       font-size: 12px; /* Adjust font size for smaller screens */
     }
   }
+  /*top seller section*/
   .itemSlider {
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.2);
     position: relative;
     background-color: #D9D9D9;
-    border: dashed 2px black;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   .itemSliderWrapper {
     overflow: hidden; /* Ensures only 4 items are visible */
     width: 90%;
-    border: dashed 2px red;
   }
 
   .itemSliderContainer {
@@ -139,10 +139,10 @@
     height: 310px;
     margin: 15px;
     position: relative;
-    border: dashed 2px blue;
     flex-shrink: 0; /* Ensures all items remain the same size */
     padding: 10px;
     background-color: white;
+    border-radius: 5px;
   }
 
   .topSellerItem img {
@@ -227,10 +227,6 @@
   #heartButton:hover {
     background-color: red;
   }
-  #heartButton::before {
-    background-image: url('fillHeart.png');
-  }
-  
   #price{
     color: black;
     text-align: center;
@@ -281,4 +277,29 @@
       padding: 4px;
     }
   }
+  /* Responsive styles for Add to Cart Button and Heart Button */
+  @media (max-width: 768px) {
+    #addToCartButton {
+      font-size: 12px; /* Smaller font size for mobile */
+      padding: 4px 4px; /* Smaller padding for mobile */
+      width: 65%; /* Adjust button width */
+      bottom: 8px; /* Move button up slightly */
+      left: 5px; /* Adjust left margin for mobile */
+    }
+
+    #heartButton {
+      padding: 4px; /* Smaller padding for mobile */
+      bottom: 8px; /* Move heart button up slightly */
+      right: 10px; /* Adjust right margin for mobile */
+      width: 25px; /* Smaller size for heart button */
+      height: 25px; /* Ensure it's proportional */
+    }
+
+    /* Adjust heart icon size within the heart button */
+    #heartButton img {
+      width: 80%; /* Smaller icon size */
+      height: auto;
+    }
+  }
+
 
