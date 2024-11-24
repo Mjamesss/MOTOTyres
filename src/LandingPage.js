@@ -328,6 +328,65 @@ function LandingPage() {
             <img src="right-arrow.png" alt="Scroll Right" />
             </button>
         </section>
+        {/*Rating Section*/}
+        <section className="customer-feedback mt-5">
+        <h2>What Customers Say About Us</h2>
+        <div className="feedback-container">
+            <div className="feedback-item">
+            <p className="feedback-text">"Amazing service and high-quality products!"</p>
+            <div className="star-rating">
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-half"></i>
+                <i className="bi bi-star"></i>
+            </div>
+            <h4 className="customer-name">John Doe</h4>
+            </div>
+            <div className="feedback-item">
+            <p className="feedback-text">"I love the quick delivery and excellent support."</p>
+            <div className="star-rating">
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star"></i>
+            </div>
+            <h4 className="customer-name">Jane Smith</h4>
+            </div>
+            <div className="feedback-item">
+            <p className="feedback-text">"Great experience overall. Will shop again!"</p>
+            <div className="star-rating">
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+            </div>
+            <h4 className="customer-name">Mike Johnson</h4>
+            </div>
+        </div>
+        </section>
+        {/*HR SOLID RED*/}
+        <div className='mt-5' style={{ height: '5px', backgroundColor: 'red', width: '100%' }}></div>
+
+        {/*FEATURE OF PAYMENT*/}
+        <section className="payment-feature mt-5">
+        <div className="payment-images">
+            {/*Provide 130x100 for picture if ever need to change*/}
+            <img src="mop1.png" alt="Payment Option 1" />
+            <img src="mop2.png" alt="Payment Option 2" />
+            <img src="mop3.png" alt="Payment Option 3" />
+        </div>
+        <h3>The Future of Online Motorbike Parts Purchasing</h3>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid error
+            praesentium tempora perferendis debitis autem sit suscipit provident
+            possimus architecto quas, recusandae, cupiditate necessitatibus! Nobis nemo
+            rerum omnis voluptatem praesentium?
+        </p>
+        </section>
+
 
             {/* Footer */}
             <footer className="bg-black text-white mt-5">
