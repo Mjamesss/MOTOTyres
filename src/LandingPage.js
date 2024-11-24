@@ -58,61 +58,6 @@ function LandingPage() {
         showSlides(n);
     };
 
-    // Top Sellers Section
-    const topSellerSliderContainer = useRef(null);
-    const newArrivalSliderContainer = useRef(null);
-    
-    const [topSellerCurrentScrollPosition, setTopSellerCurrentScrollPosition] = useState(0);
-    const [newArrivalCurrentScrollPosition, setNewArrivalCurrentScrollPosition] = useState(0);
-    
-    const itemWidth = 200 + 30; // Item width + margin
-    const visibleItems = 4;
-    
-    const handleTopSellerScroll = (direction) => {
-        const sliderContainer = topSellerSliderContainer.current;
-        const maxScrollPosition = (sliderContainer.children.length - visibleItems) * itemWidth;
-        let newScrollPosition = topSellerCurrentScrollPosition;
-
-        if (direction === 'left') {
-        newScrollPosition = Math.max(newScrollPosition - itemWidth * visibleItems, 0);
-        } else if (direction === 'right') {
-        newScrollPosition = Math.min(newScrollPosition + itemWidth * visibleItems, maxScrollPosition);
-        }
-
-        setTopSellerCurrentScrollPosition(newScrollPosition);
-        sliderContainer.style.transform = `translateX(-${newScrollPosition}px)`;
-    };
-
-    const handleNewArrivalScroll = (direction) => {
-        const sliderContainer = newArrivalSliderContainer.current;
-        const maxScrollPosition = (sliderContainer.children.length - visibleItems) * itemWidth;
-        let newScrollPosition = newArrivalCurrentScrollPosition;
-
-        if (direction === 'left') {
-        newScrollPosition = Math.max(newScrollPosition - itemWidth * visibleItems, 0);
-        } else if (direction === 'right') {
-        newScrollPosition = Math.min(newScrollPosition + itemWidth * visibleItems, maxScrollPosition);
-        }
-
-        setNewArrivalCurrentScrollPosition(newScrollPosition);
-        sliderContainer.style.transform = `translateX(-${newScrollPosition}px)`;
-    };
-
-    const [heartStatesTs, setHeartStatesTs] = useState([false, false, false, false, false]);
-
-    const toggleHeartTs = (index) => {
-        const updatedStates = [...heartStatesTs];
-        updatedStates[index] = !updatedStates[index];
-        setHeartStatesTs(updatedStates);
-    };
-
-    const [heartStatesNa, setHeartStatesNa] = useState([false, false, false, false, false]);
-    const toggleHeartNa = (index) => {
-        const updatedStates = [...heartStatesNa];
-        updatedStates[index] = !updatedStates[index];
-        setHeartStatesNa(updatedStates);
-    };
-
   
     return (
         <div>
@@ -262,110 +207,103 @@ function LandingPage() {
             </section>
 
 
-            {/* Top Sellers */}
-            <section className="itemSlider mt-5">
-            <button className="scrollButton leftScroll" onClick={() => handleTopSellerScroll('left')}>
-            <img src="right-arrow.png" alt="Scroll Left" />
-            </button>
-            <div className="itemSliderWrapper">
-            <h3 className="mt-2">Top Seller</h3>
-            <div className="itemSliderContainer" ref={topSellerSliderContainer}>
-                {Array(10).fill().map((_, index) => (
-                <div key={index} className="topSellerItem">
-                    <img src="topseller.jpg" alt={`Product ${index + 1}`} className="img-fluid" id="imgSizing" />
-                    <h5 className="mt-3 pr-2">₱3,499.00</h5>
-                    <p>Toyota Yamaha</p>
-                    <button id="addToCartButton">Add to Cart</button>
-                    <button
-                    id="heartButton"
-                    onClick={() => toggleHeartTs(index)}
-                    className={heartStatesTs[index] ? "clicked" : ""}
-                >
-                <img
-                    src={heartStatesTs[index] ? "fillHeart.png" : "love.png"}
-                    alt="Heart Icon"
-                        />
-                    </button>
+                {/* Top seller section */}
+            <section className="itemsSection mt-5">
+            <h3 className="mt-2">
+            Top Seller
+            <a href="#">View all</a>
+            </h3>
+            <div className="itemsContainer mt-5">
+            {/* Product 1 */}
+            <div className="item">
+                <img src="200x200.png" alt="Product 1" className="img-fluid" />
+                <h5>₱3,499.00</h5>
+                <h6>₱3,499.00</h6>
+                <p>Toyota Yamaha</p>
+                <button className="addToCartButton">Add to Cart</button>
+            </div>
 
-                </div>
-                ))}
+            {/* Product 2 */}
+            <div className="item">
+                <img src="200x200.png" alt="Product 2" className="img-fluid" />
+                <h5>₱2,999.00</h5>
+                <p>Honda CBR</p>
+                <button className="addToCartButton">Add to Cart</button>
+            </div>
+
+            {/* Product 3 */}
+            <div className="item">
+                <img src="200x200.png" alt="Product 3" className="img-fluid" />
+                <h5>₱4,000.00</h5>
+                <p>Yamaha MT-09</p>
+                <button className="addToCartButton">Add to Cart</button>
+            </div>
+
+            {/* Product 4 */}
+            <div className="item">
+                <img src="200x200.png" alt="Product 4" className="img-fluid" />
+                <h5>₱5,200.00</h5>
+                <p>BMW S1000RR</p>
+                <button className="addToCartButton">Add to Cart</button>
+            </div>
+
+            {/* Product 5 */}
+            <div className="item">
+                <img src="200x200.png" alt="Product 5" className="img-fluid" />
+                <h5>₱2,500.00</h5>
+                <p>Kawasaki Ninja</p>
+                <button className="addToCartButton">Add to Cart</button>
             </div>
             </div>
-            <button className="scrollButton rightScroll" onClick={() => handleTopSellerScroll('right')}>
-            <img src="right-arrow.png" alt="Scroll Right" />
-            </button>
         </section>
 
         {/* New Arrivals Section */}
-        <section className="itemSlider mt-5">
-            <button className="scrollButton leftScroll" onClick={() => handleNewArrivalScroll('left')}>
-            <img src="right-arrow.png" alt="Scroll Left" />
-            </button>
-            <div className="itemSliderWrapper">
-            <h3 className="mt-2">New Arrivals</h3>
-            <div className="itemSliderContainer" ref={newArrivalSliderContainer}>
-                {Array(2).fill().map((_, index) => (
-                <div key={index} className="topSellerItem">
-                    <img src="topseller.jpg" alt={`Product ${index + 1}`} className="img-fluid" id="imgSizing" />
-                    <h5 className="mt-3 pr-2">₱3,499.00</h5>
-                    <p>Toyota Yamaha</p>
-                    <button id="addToCartButton">Add to Cart</button>
-                    <button
-                    id="heartButton"
-                    onClick={() => toggleHeartNa(index)}
-                    className={heartStatesNa[index] ? "clicked" : ""}
-                >
-                <img
-                    src={heartStatesNa[index] ? "fillHeart(2).png" : "love(2).png"}
-                    alt="Heart Icon"
-                        />
-                    </button>
-                </div>
-                ))}
+        <section className="itemsSection mt-5">
+            <h3 className="mt-2">
+            New Arrivals
+            <a href="#">View all</a>
+            </h3>
+            <div className="itemsContainer">
+            {/* Product 1 */}
+            <div className="item">
+                <img src="200x200.png" alt="Product 1" className="img-fluid" />
+                <h5>₱3,499.00</h5>
+                <p>Toyota Yamaha</p>
+                <button className="addToCartButton">Add to Cart</button>
+            </div>
+
+            {/* Product 2 */}
+            <div className="item">
+                <img src="200x200.png" alt="Product 2" className="img-fluid" />
+                <h5>₱2,999.00</h5>
+                <p>Honda CBR</p>
+                <button className="addToCartButton">Add to Cart</button>
+            </div>
+
+            {/* Product 3 */}
+            <div className="item">
+                <img src="200x200.png" alt="Product 3" className="img-fluid" />
+                <h5>₱4,000.00</h5>
+                <p>Yamaha MT-09</p>
+                <button className="addToCartButton">Add to Cart</button>
+            </div>
+
+            {/* Product 4 */}
+            <div className="item">
+                <img src="200x200.png" alt="Product 4" className="img-fluid" />
+                <h5>₱5,200.00</h5>
+                <p>BMW S1000RR</p>
+                <button className="addToCartButton">Add to Cart</button>
+            </div>
+
+            {/* Product 5 */}
+            <div className="item">
+                <img src="200x200.png" alt="Product 5" className="img-fluid" />
+                <h5>₱2,500.00</h5>
+                <p>Kawasaki Ninja</p>
+                <button className="addToCartButton">Add to Cart</button>
             </div>
             </div>
-            <button className="scrollButton rightScroll" onClick={() => handleNewArrivalScroll('right')}>
-            <img src="right-arrow.png" alt="Scroll Right" />
-            </button>
-        </section>
-        {/*Rating Section*/}
-        <section className="customer-feedback mt-5">
-        <h2>What Customers Say About Us</h2>
-        <div className="feedback-container">
-            <div className="feedback-item">
-            <p className="feedback-text">"Amazing service and high-quality products!"</p>
-            <div className="star-rating">
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-half"></i>
-                <i className="bi bi-star"></i>
-            </div>
-            <h4 className="customer-name">John Doe</h4>
-            </div>
-            <div className="feedback-item">
-            <p className="feedback-text">"I love the quick delivery and excellent support."</p>
-            <div className="star-rating">
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star"></i>
-            </div>
-            <h4 className="customer-name">Jane Smith</h4>
-            </div>
-            <div className="feedback-item">
-            <p className="feedback-text">"Great experience overall. Will shop again!"</p>
-            <div className="star-rating">
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-            </div>
-            <h4 className="customer-name">Mike Johnson</h4>
-            </div>
-        </div>
         </section>
         {/*HR SOLID RED*/}
         <div className='mt-5' style={{ height: '5px', backgroundColor: 'red', width: '100%' }}></div>

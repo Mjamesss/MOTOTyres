@@ -51,14 +51,14 @@
     background-color: #717171;
   }
 
-  /* Brands Section */
-.brandsSection {
+  .brandsSection {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
     width: 100%; /* Full width */
+    flex-wrap: wrap; /* Ensure it wraps on smaller screens */
   }
   
   /* Brand Card Styles */
@@ -69,12 +69,80 @@
     overflow: hidden;
     position: relative;
     box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .brand:hover {
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.4); /* Enlarge shadow on hover */
   }
   
   .brandImg {
     width: 100%;
     height: 180px;
     object-fit: cover;
+  }
+  
+  .shopNowButton {
+    background-color: #4caf50;
+    color: white;
+    width: 40%; /* Wider for better touch on smaller screens */
+    height: auto;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 10px;
+    left: 75%; /* Center horizontally */
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .shopNowButton:hover {
+    background-color: #45a049;
+  }
+  @media (max-width: 420px) {
+    .shopNowButton {
+      width: 50%; /* Wider for better touch on smaller screens */
+      bottom: 10px;
+      left: 70%; /* Center horizontally */
+      font-size: 12px; /* Adjust font size for smaller screens */
+    }
+  
+    .brandImg {
+      height: 150px; /* Reduce image height on smaller screens */
+    }
+  
+    .brandsSection {
+      flex-wrap: wrap; /* Allow wrapping for mobile */
+    }
+  
+    .brand {
+      width: 45%; /* Reduce width to fit more items */
+    }
+  
+    .shopNowButton {
+      font-size: 12px; /* Adjust font size for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .brand {
+      width: 80%; /* Take up more width on smaller screens */
+      margin: 5px; /* Smaller gap between items */
+    }
+  
+    .shopNowButton {
+      width: 60%; /* Make button a little wider */
+      font-size: 10px; /* Further reduce font size */
+    }
+  
+    .brandImg {
+      height: 130px; /* Smaller image height for very small screens */
+    }
   }
   
   .shopNowButton {
@@ -125,151 +193,148 @@
     .shopNowButton {
       font-size: 12px; /* Adjust font size for smaller screens */
     }
-
   }
   /*top seller section*/
-  .itemSlider {
-    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.2);
-    position: relative;
-    background-color: #D9D9D9;
+  .itemsSection {
+    width: 100%;
+    align-self: center;
+    margin-left: 50px;
+    padding: 20px;
+  }
+
+  .itemsSection h3 {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    width: 85%;
-    margin: 0 auto;
-    border-radius: 5px;
+    justify-content: space-between; /* Space between the heading and 'View all' */
+    align-items: center; /* Vertically center them */
+    margin: 0;
   }
 
-  .itemSliderWrapper {
-    overflow: hidden; /* Ensures only 4 items are visible */
-    width: 90%;
+  .itemsSection a {
+    color: blue;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    margin-right: 60px;
   }
 
-  .itemSliderContainer {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: max-content; /* Ensures the container expands based on content */
+  .itemsSection a:hover {
+    color: rgb(18, 18, 212);
   }
 
-  .topSellerItem {
-    width: 200px;
-    height: 310px;
-    margin: 15px;
-    position: relative;
-    flex-shrink: 0; /* Ensures all items remain the same size */
-    padding: 10px;
+  .itemsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Default layout with multiple columns */
+    gap: 20px;
+  }
+
+  .item {
     background-color: white;
+    padding: 15px;
     border-radius: 5px;
-  }
-
-  .topSellerItem img {
-    object-fit: cover;
-    width: 10%;
-    height: 100%;
-    border-radius: 5px;
-
-  }
-
-  /* Scroll Buttons */
-  .rightScroll {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-  }
-  .leftScroll {
-    width: 40px;
-    rotate:180deg;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-  }
-
-  
-  .scrollButton img {
-    width: 100%;
-    height: auto;
-  }
-
-
-  .scrollButton:hover {
-    background-color: #555;
-    transform: scale(1.2); /* Slightly enlarges the button */
-    transition: transform 2s ease, background-color 0.3s ease;
-      }
-
-  /* Add to Cart Button */
-  #addToCartButton {
-    background-color: #D9D9D9;
-    color: black;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    transition: background-color 0.3s ease;
-    margin-left: 10px;
-    width: 60%;
-  }
-
-  #addToCartButton:hover {
-    background-color: blue;
-  }
-
-  /* Heart Button */
-  #heartButton {
-    background-color: #D9D9D9;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    height: 10%;
-  }
-
-  #heartButton:hover {
-    background-color: red;
-  }
-  #price{
-    color: black;
     text-align: center;
-    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
-  #imgSizing{
+
+  .item img {
     width: 100%;
-    max-width: 500px;
-    height: auto;
-    margin: 0 auto;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
   }
-  #heartButton img {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+
+  .item h5 {
+    font-size: 18px;
+    color: black;
+    margin: 10px 0;
   }
-  
-  #heartButton.clicked img {
-    transform: scale(1.2);
-    opacity: 0.8;
+  .item h6 {
+    font-size: 15px;
+    color: gray;
+    text-decoration: line-through;
+    margin: 10px 0;
   }
-  #discountedPrice{
+
+  .item p {
     font-size: 14px;
     color: gray;
-    text-decoration: line-through 1.5px;
+    margin-bottom: 15px;
+  }
+
+  .addToCartButton {
+    background-color: #D9D9D9;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .addToCartButton:hover {
+    background-color: #bdadad;
+  }
+
+  /* Mobile Responsiveness (Single row layout on small screens) */
+  @media (max-width: 768px) {
+    .itemsContainer {
+      display: flex;
+      flex-wrap: nowrap; /* Ensures that all items stay in one row */
+      overflow-x: auto; /* Allows horizontal scrolling if items overflow */
+      gap: 10px;
+    }
+
+    .item {
+      flex: 0 0 auto; /* Prevent items from stretching */
+      width: 200px;   /* Fixed width for each item */
+    }
+
+    .item img {
+      width: 100%;
+      height: 200px;  /* Fixed height */
+      object-fit: cover;
+      border-radius: 5px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .item h5 {
+      font-size: 16px; /* Reduce font size for mobile */
+    }
+
+    .item p {
+      font-size: 12px; /* Reduce font size for mobile */
+    }
+
+    .addToCartButton {
+      padding: 8px;
+      font-size: 12px; /* Smaller font size for mobile */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .item {
+      padding: 10px;
+    }
+
+    .addToCartButton {
+      padding: 6px;
+      font-size: 10px; /* Smaller font size for very small screens */
+    }
+
+    .item h5 {
+      font-size: 14px; /* Adjust price font size for smaller screens */
+    }
+
+    .item p {
+      font-size: 10px; /* Adjust product name font size for smaller screens */
+    }
+
+    .itemsContainer {
+      display: flex;
+      flex-wrap: nowrap; /* Still a single row */
+      overflow-x: auto; /* Horizontal scroll remains enabled */
+    }
   }
   /* mobile devices*/
   @media (max-width: 768px) {
@@ -277,29 +342,9 @@
       width: 10px;
       height: 10px;
     }
-    .topSellerItem {
-      width: 140px; /* Reduce width for smaller screens */
-      height: 250px;
-    }
   
-    .itemSliderWrapper {
-      width: 100%;
-    }
   
-    .scrollButton {
-      width: 30px;
-      height: 30px;
-    }
-  
-    #addToCartButton {
-      font-size: 12px;
-      padding: 4px 8px;
-      width: 65%; /* Adjust width of buttons */
-    }
-  
-    #heartButton {
-      padding: 2px;
-    }
+
     .brand {
       width: 40%;
       height: auto; /* Adjust height automatically */
@@ -314,30 +359,6 @@
       }
     }
   }
-  /* Responsive styles for Add to Cart Button and Heart Button */
-  @media (max-width: 768px) {
-    #addToCartButton {
-      font-size: 12px; /* Smaller font size for mobile */
-      padding: 4px 4px; /* Smaller padding for mobile */
-      width: 60%; /* Adjust button width */
-      bottom: 8px; /* Move button up slightly */
-      left: 5px; /* Adjust left margin for mobile */
-    }
-
-    #heartButton {
-      padding: 4px; /* Smaller padding for mobile */
-      bottom: 8px; /* Move heart button up slightly */
-      right: 10px; /* Adjust right margin for mobile */
-      width: 25px; /* Smaller size for heart button */
-      height: 25px; /* Ensure it's proportional */
-    }
-
-    /* Adjust heart icon size within the heart button */
-    #heartButton img {
-      width: 80%; /* Smaller icon size */
-      height: auto;
-    }
-  }
 /*rating section */
 .customer-feedback h2 {
   text-align: center;
@@ -350,7 +371,7 @@
   padding: 20px;
   background-color: #fff;
   max-width: 1200px;
-  margin: 20px auto;
+  margin:  auto;
   border-radius: 10px;
 }
 
@@ -426,7 +447,6 @@
   }
 }
 /*FUTURE OF PAYMENT*/.payment-feature {
-      border: 1px dashed color black;
       padding: 40px 20px;
     }
 
