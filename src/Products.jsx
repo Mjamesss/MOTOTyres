@@ -84,12 +84,12 @@ function Products() { // file name
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#" style={{ color: 'white' }}>
+                                <a className="nav-link" href="Products" style={{ color: 'white' }}>
                                     Products
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#" style={{ color: 'white' }}>
+                                <a className="nav-link" href="Categories" style={{ color: 'white' }}>
                                     Categories
                                 </a>
                             </li>

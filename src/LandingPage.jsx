@@ -90,7 +90,7 @@ function LandingPage() {
                                 <a className="nav-link" href="Products" style={{ color: 'white' }}>Products</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#" style={{ color: 'white' }}>Categories</a>
+                                <a className="nav-link" href="Categories" style={{ color: 'white' }}>Categories</a>
                             </li>
                             <li className="nav-item">
                                 <Link to="/PricelistPage" className="nav-link" style={{ color: 'white' }}>
