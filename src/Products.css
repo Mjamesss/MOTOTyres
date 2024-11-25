@@ -1,0 +1,140 @@
+.filterContainer {
+    display: flex;
+    gap: 20px;
+    padding: 20px; /* Added padding to the container for spacing */
+}
+
+/* Aside section styling */
+aside {
+    width: 20%; /* Decreased width of the filter aside */
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    display: block;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+main {
+    width: 80%; /* Main content area width */
+    padding: 20px;
+}
+
+/* Filter section styling */
+.filter section {
+    margin-bottom: 20px; /* Margin between filter sections */
+}
+
+.filter h2 {
+    font-size: 1.25rem; /* Adjusted heading size */
+    margin-bottom: 10px; /* Added margin below headings */
+    font-weight: 600;
+}
+
+.filter label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px; /* Added space below labels */
+}
+
+.form-control, .form-check-input {
+    margin-bottom: 10px; /* Space between inputs */
+}
+.form-control{
+    border-radius: 10px;
+}
+
+.form-check-label {
+    font-weight: normal;
+}
+
+/* Adjusted the positioning of the main title */
+#titleH3{
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px; /* Space below the main title */
+}
+
+/* Added margins between the filter sections */
+.filter p {
+    margin-bottom: 8px; /* Added margin to each filter item */
+}
+
+hr {
+    margin: 20px 0; /* Spacing between sections */
+}
+.filter-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.filter-btn {
+    display: none;
+}
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+    .filterContainer {
+        display: block; /* Stack filter and main content vertically on small screens */
+    }
+
+    aside {
+        display: none; /* Hide aside on mobile */
+    }
+
+    /* Filter modal button */
+    .filter-btn {
+        display: flex;
+        position: fixed;
+        bottom: 70px;
+        right: 20px;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 1000; /* Ensure button is above other content */
+        
+    }
+
+    .filter-modal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba( 255, 255, 255, 0.05 );
+        backdrop-filter: blur( 3px );
+        -webkit-backdrop-filter: blur( 3px );
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .filter-modal-content {
+        background-color: #D9D9D9;
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .filter-modal.active {
+        display: flex; /* Show modal when active */
+    }
+}

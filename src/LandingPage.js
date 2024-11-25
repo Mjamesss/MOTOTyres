@@ -87,7 +87,7 @@ function LandingPage() {
                                 <a className="nav-link" href="#" style={{ color: 'white' }}>Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#" style={{ color: 'white' }}>Products</a>
+                                <a className="nav-link" href="Products" style={{ color: 'white' }}>Products</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#" style={{ color: 'white' }}>Categories</a>
@@ -263,7 +263,7 @@ function LandingPage() {
             New Arrivals
             <a href="#">View all</a>
             </h3>
-            <div className="itemsContainer" data-aos="fade-up">
+            <div className="itemsContainer mt-5" data-aos="fade-up">
             {/* Product 1 */}
             <div className="item">
                 <img src="200x200.png" alt="Product 1" className="img-fluid" />

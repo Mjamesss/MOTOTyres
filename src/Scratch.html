@@ -3,82 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 Feature Brands Section</title>
+    <title>Filter Sidebar</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .brand-section {
-            padding: 60px 20px;
-            background-color: #f9f9f9;
+        /* Reset padding and margin for a consistent layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .brand-card {
-            text-align: center;
+        /* Container to separate aside and main content */
+        .filterContainer {
+            display: flex;
+            gap: 20px;
+            padding: 20px; /* Added padding to the container for spacing */
+        }
+
+        /* Aside section styling */
+        aside {
+            width: 20%; /* Decreased width of the filter aside */
             padding: 20px;
-            border: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            display: block;
+            background-color: #D9D9D9;
+            border-radius: 10px;
+        }
+
+        main {
+            width: 80%; /* Main content area width */
+            padding: 20px;
+        }
+
+        /* Filter section styling */
+        .filter section {
+            margin-bottom: 20px; /* Margin between filter sections */
+        }
+
+        .filter h2 {
+            font-size: 1.25rem; /* Adjusted heading size */
+            margin-bottom: 10px; /* Added margin below headings */
+            font-weight: 600;
+        }
+
+        .filter label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px; /* Added space below labels */
+        }
+
+        .form-control, .form-check-input {
+            margin-bottom: 10px; /* Space between inputs */
+        }
+        .form-control{
+            border-radius: 10px;
+        }
+
+        .form-check-label {
+            font-weight: normal;
+        }
+
+        /* Adjusted the positioning of the main title */
+        #titleH3{
+            padding: 20px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px; /* Space below the main title */
+        }
+
+        /* Added margins between the filter sections */
+        .filter p {
+            margin-bottom: 8px; /* Added margin to each filter item */
+        }
+
+        hr {
+            margin: 20px 0; /* Spacing between sections */
+        }
+        .filter-modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .filter-modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
             border-radius: 8px;
-            background-color: #fff;
-            flex: 1;
-            margin: 0 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
-        .brand-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        .filter-btn {
+            display: none;
         }
+        /* Mobile-specific styles */
+        @media (max-width: 767px) {
+            .filterContainer {
+                display: block; /* Stack filter and main content vertically on small screens */
+            }
 
-        .brand-card img {
-            max-width: 100px;
-            margin-bottom: 15px;
-        }
+            aside {
+                display: none; /* Hide aside on mobile */
+            }
 
-        .shop-btn {
-            margin-top: 10px;
-        }
+            /* Filter modal button */
+            .filter-btn {
+                display: flex;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 10px;
+                font-size: 20px;
+                cursor: pointer;
+                z-index: 1000; /* Ensure button is above other content */
+                
+            }
 
-        .brand-container {
-            overflow-x: auto; /* Allow horizontal scrolling on smaller devices */
-            white-space: nowrap; /* Prevent wrapping of child elements */
-        }
+            .filter-modal {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba( 255, 255, 255, 0.05 );
+                backdrop-filter: blur( 3px );
+                -webkit-backdrop-filter: blur( 3px );
+                display: none;
+                justify-content: center;
+                align-items: center;
+            }
 
-        .brand-container > .brand-card {
-            display: inline-block; /* Ensure cards stay inline */
-            white-space: normal; /* Allow text wrapping inside the card */
+            .filter-modal-content {
+                background-color: #D9D9D9;
+                width: 90%;
+                max-width: 400px;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .filter-modal.active {
+                display: flex; /* Show modal when active */
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Feature Brands Section -->
-    <section class="brand-section">
-        <div class="container">
-            <div class="d-flex flex-wrap flex-lg-nowrap justify-content-center brand-container">
-                <!-- Brand 1 -->
-                <div class="brand-card">
-                    <img src="https://via.placeholder.com/100" alt="Brand 1 Logo">
-                    <h5>Brand 1</h5>
-                    <p>High-quality products for your lifestyle.</p>
-                    <button class="btn btn-primary shop-btn">Shop Now</button>
-                </div>
-                <!-- Brand 2 -->
-                <div class="brand-card">
-                    <img src="https://via.placeholder.com/100" alt="Brand 2 Logo">
-                    <h5>Brand 2</h5>
-                    <p>Innovative solutions for your everyday needs.</p>
-                    <button class="btn btn-primary shop-btn">Shop Now</button>
-                </div>
-                <!-- Brand 3 -->
-                <div class="brand-card">
-                    <img src="https://via.placeholder.com/100" alt="Brand 3 Logo">
-                    <h5>Brand 3</h5>
-                    <p>Trusted by professionals worldwide.</p>
-                    <button class="btn btn-primary shop-btn">Shop Now</button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Title placed at the top left -->
+    <h3 id="titleH3">Products</h3>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- Filter Button for Mobile -->
+    <button class="filter-btn" id="filterBtn">Filter</button> <!-- Search icon for the filter button -->
+
+    <!-- Filter Modal for Mobile -->
+    <div class="filter-modal" id="filterModal">
+        <div class="filter-modal-content">
+            <section class="filter">
+                <!-- Categories Filter -->
+                <header>
+                    <h2>Categories</h2>
+                </header>
+                <p>Category 1</p>
+                <p>Category 2</p>
+                <p>Category 3</p>
+                <p>Category 4</p>
+
+                <hr>
+
+                <!-- Brands Filter -->
+                <header>
+                    <h2>Brands</h2>
+                </header>
+                <p>Brand 1</p>
+                <p>Brand 2</p>
+                <p>Brand 3</p>
+                <p>Brand 4</p>
+
+                <hr>
+
+                <!-- Price Range Filter -->
+                <header>
+                    <h2>Price Range</h2>
+                </header>
+                <label for="minPrice" class="form-label">Min Price: $</label>
+                <input type="number" class="form-control mb-3" id="minPrice" placeholder="10" min="0">
+                
+                <label for="maxPrice" class="form-label">Max Price: $</label>
+                <input type="number" class="form-control mb-3" id="maxPrice" placeholder="900" max="999999999999999999999">
+
+                <hr>
+
+                <!-- Availability Filter -->
+                <header>
+                    <h2>Availability</h2>
+                </header>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inStock">
+                    <label class="form-check-label" for="inStock">
+                        In stock only
+                    </label>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Main content section -->
+    <div class="filterContainer">
+        <!-- Aside filter section (visible only on desktop) -->
+        <aside>
+            <section class="filter">
+                <!-- Categories Filter -->
+                <header>
+                    <h2>Categories</h2>
+                </header>
+                <p>Category 1</p>
+                <p>Category 2</p>
+                <p>Category 3</p>
+                <p>Category 4</p>
+
+                <hr>
+
+                <!-- Brands Filter -->
+                <header>
+                    <h2>Brands</h2>
+                </header>
+                <p>Brand 1</p>
+                <p>Brand 2</p>
+                <p>Brand 3</p>
+                <p>Brand 4</p>
+
+                <hr>
+
+                <!-- Price Range Filter -->
+                <header>
+                    <h2>Price Range</h2>
+                </header>
+                <label for="minPrice" class="form-label">Min Price: ₱</label>
+                <input type="number" class="form-control mb-3" id="minPrice" placeholder="Minimum">
+                
+                <label for="maxPrice" class="form-label">Max Price: ₱</label>
+                <input type="number" class="form-control mb-3" id="maxPrice" placeholder="Maximum">
+
+                <hr>
+
+                <!-- Availability Filter -->
+                <header>
+                    <h2>Availability</h2>
+                </header>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inStock">
+                    <label class="form-check-label" for="inStock">
+                        In stock only
+                    </label>
+                </div>
+            </section>
+        </aside>
+
+        <!-- Main content area -->
+        <main>
+            <!-- Your main content goes here -->
+            <h2>Main content</h2>
+            <p>This is where your main content would be displayed. You can display filtered products here based on the options selected in the filter sidebar.</p>
+        </main>
+    </div>
+
+    <!-- Bootstrap JS (Optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Script for Modal -->
+    <script>
+        const filterBtn = document.getElementById('filterBtn');
+        const filterModal = document.getElementById('filterModal');
+
+        // Toggle modal visibility when the filter button is clicked
+        filterBtn.addEventListener('click', function() {
+            filterModal.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

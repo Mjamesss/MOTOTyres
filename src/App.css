@@ -7,7 +7,6 @@
   box-sizing: border-box; /* Ensures padding and border do not affect element size */
  
 }
-
 body {
   font-family: 'inter', sans-serif; /* Change 'inter' to 'Poppins' as per your import */
   background-color: #f8f9fa; /* Optional background color */

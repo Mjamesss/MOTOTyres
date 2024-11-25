@@ -63,7 +63,6 @@
   
   .brand-section {
     padding: 60px 20px;
-    background-color: #f9f9f9;
 }
 
 .brand-card {
@@ -79,6 +78,7 @@
 
 .brand-card:hover {
     transform: translateY(-5px);
+    transition: background-color 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -93,6 +93,7 @@
 
 .brand-container {
     overflow-x: auto; /* Allow horizontal scrolling on smaller devices */
+    overflow: hidden;
     white-space: nowrap; /* Prevent wrapping of child elements */
 }
 
