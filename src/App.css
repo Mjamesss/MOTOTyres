@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-
 * {
   padding: 0;
   margin: 0;
@@ -70,7 +68,7 @@ body {
   outline: none;
   padding: 5px;
   width: 50%;
-  border-radius: 50px;
+  border-radius: 10px;
 }
 
 .search-input.active {
@@ -89,11 +87,6 @@ body {
 }
 
 /* Hamburger Menu */
-.navbar-toggler {
-  border: none;
-  background: transparent;
-}
-
 .hamburger-icon {
   width: 30px;
   height: auto;
@@ -104,6 +97,7 @@ body {
   border: none !important; /* Force remove any borders */
   outline: none; /* Remove any outline */
   box-shadow: none; /* Remove any box-shadow if present */
+  background: transparent;
 }
 
 .navbar-toggler:focus {

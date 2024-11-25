@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import './Products.css';
 import AOS from 'aos'; // Correctly import AOS
 import 'aos/dist/aos.css'; // Import the AOS CSS file
+import axios from 'axios';
 
-
-function PricelistPage() { //file name
-    //Modal JS login
+function Products() { // file name
+    // Modal JS login
     const [showModal, setShowModal] = useState(false); // Modal visibility state
     const toggleModal = () => setShowModal(!showModal); // Toggle modal visibility
     const closeModal = () => setShowModal(false); // Close modal
@@ -16,99 +16,125 @@ function PricelistPage() { //file name
         const query = document.getElementById('searchInput').value;
         console.log('Search Query:', query); // You can replace this with actual search functionality
     };
+
     // Initialize AOS inside useEffect hook (this is the correct place)
     useEffect(() => {
         AOS.init({
             duration: 3000, // Animation duration in milliseconds
-            offset: 200, //
+            offset: 200,
             once: true, // Animation should happen only once
         });
     }, []); // Empty dependency array ensures this runs only once when component mounts
+
     // Filter Modal
     const [showModalF, setShowModalF] = useState(false);
 
     const toggleModalF = () => {
         setShowModalF(!showModalF);
     };
-  
+
+    // My wishlist button
+    const [products, setProducts] = useState([]); // Initialize state
+    const [isInWishlist, setIsInWishlist] = useState(false);
+    const toggleWishlist = () => {
+        setIsInWishlist(!isInWishlist);
+    };
+    //data base item
+    useEffect(() => {
+        const fetchProducts = async () => {
+          try {
+            const response = await axios.get('http://localhost:5000/api/products');
+            setProducts(response.data); // Set the fetched products in state
+          } catch (error) {
+            console.error("Error fetching products:", error);
+          }
+        };
+      
+        fetchProducts();
+      }, []);
+      
+      
     return (
         <div>
             {/* Navbar */}
             <nav className="navbar navbar-expand-lg navbar-dark bg-black">
-            <div className="container-fluid">
-                {/* Hamburger Menu */}
-                <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                >
-                <img src="/hamburger-menu.png" alt="Menu" className="hamburger-icon" />
-                </button>
-
-                {/* Logo */}
-                <img src="/mototyres_logo 1.png" alt="Mototyres Logo" className="mototyres-logo" />
-
-                {/* Collapsible Content */}
-                <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav mb-2 mb-lg-0">
-                    <li className="nav-item">
-                    <a className="nav-link" href="/" style={{ color: 'white' }}>Home</a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="#" style={{ color: 'white' }}>Products</a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" href="#" style={{ color: 'white' }}>Categories</a>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="/PricelistPage" className="nav-link" style={{ color: 'white' }}>
-                        Pricelist
-                    </Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="/" className="nav-link" style={{ color: 'white' }}>
-                        Me
-                    </Link>
-                    </li>
-                    <input
-                    type="text"
-                    id="searchInputMobile"
-                    className="search-input"
-                    placeholder="Search..."
-                />
-                </ul>
-                </div>
-
-                {/* Search and Log In in Mobile View (Outside of Hamburger) */}
-                <div className="d-flex align-items-center ms-auto d-lg-none">
-                <div className="d-flex align-items-center ms-5">
-                    <span
-                    className="nav-link ms-3"
-                    style={{ color: 'white', cursor: 'pointer' }}
-                    onClick={toggleModal} // Trigger modal toggle
+                <div className="container-fluid">
+                    {/* Hamburger Menu */}
+                    <button
+                        className="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
                     >
-                    Log In
-                    </span>
-                </div>
-                </div>
-                <div className="d-flex align-items-center ms-5" id="noneDisplay">
-                    <span
-                    className="nav-link ms-3"
-                    style={{ color: 'white', cursor: 'pointer' }}
-                    onClick={toggleModal} // Trigger modal toggle
-                    >
-                    Log In
-                    </span>
-                </div>
-                
+                        <img src="/hamburger-menu.png" alt="Menu" className="hamburger-icon" />
+                    </button>
 
-            </div>
+                    {/* Logo */}
+                    <img src="/mototyres_logo 1.png" alt="Mototyres Logo" className="mototyres-logo" />
+
+                    {/* Collapsible Content */}
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/" style={{ color: 'white' }}>
+                                    Home
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#" style={{ color: 'white' }}>
+                                    Products
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#" style={{ color: 'white' }}>
+                                    Categories
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/PricelistPage" className="nav-link" style={{ color: 'white' }}>
+                                    Pricelist
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/" className="nav-link" style={{ color: 'white' }}>
+                                    Me
+                                </Link>
+                            </li>
+                            <input
+                                type="text"
+                                id="searchInputMobile"
+                                className="search-input"
+                                placeholder="Search..."
+                            />
+                        </ul>
+                    </div>
+
+                    {/* Search and Log In in Mobile View (Outside of Hamburger) */}
+                    <div className="d-flex align-items-center ms-auto d-lg-none">
+                        <div className="d-flex align-items-center ms-5">
+                            <span
+                                className="nav-link ms-3"
+                                style={{ color: 'white', cursor: 'pointer' }}
+                                onClick={toggleModal} // Trigger modal toggle
+                            >
+                                Log In
+                            </span>
+                        </div>
+                    </div>
+                    <div className="d-flex align-items-center ms-5" id="noneDisplay">
+                        <span
+                            className="nav-link ms-3"
+                            style={{ color: 'white', cursor: 'pointer' }}
+                            onClick={toggleModal} // Trigger modal toggle
+                        >
+                            Log In
+                        </span>
+                    </div>
+                </div>
             </nav>
-
 
             {/* Modal Component */}
             {showModal && (
@@ -240,20 +266,42 @@ function PricelistPage() { //file name
                     </section>
                 </aside>
 
-                {/* Main content area */}
-                <main>
-                    <h2>Main content</h2>
-                    <p>This is where your main content would be displayed. You can display filtered products here based on the options selected in the filter sidebar.</p>
-                </main>
-            </div>
-            <footer className="bg-black text-white">
-                    {/* Footer Bottom */}
-                    <div className="text-center mt-4">
-                        <p>&copy; 2024 Mototyres. All Rights Reserved.</p>
+                {/* Item 200x200 image fetch to db */}
+                <div className="products-section">
+                <div className="product-list">
+                    {products.map((product) => (
+                        <div key={product._id} className="product-item">
+                            <img src={`http://localhost:5000/images/${product.image}`} alt={product.name} className="product-image" />
+                            <h3>{product.name}</h3>
+                            <p className="product-brand">Brand: {product.brand}</p>
+                            <p className="product-unit">Unit: {product.unit}</p>
+                            <p className="product-price">
+                                <span className="discounted-price">${product.price}</span>
+                                <span className="original-price">${product.originalPrice}</span>
+                            </p>
+                            <div className="product-actions">
+                                <button className="add-to-cart-btn">Add to Cart</button>
+                                <img
+                                    src={isInWishlist ? 'fillHeart.png' : 'heart.png'}
+                                    alt="Wishlist"
+                                    className="wishlist-icon"
+                                    onClick={toggleWishlist}
+                                />
+                            </div>
+                        </div>
+                    ))}
                     </div>
-            </footer>
+                </div>
             </div>
-  );
+
+            <footer className="bg-black text-white">
+                {/* Footer Bottom */}
+                <div className="text-center mt-4">
+                    <p>&copy; 2024 Mototyres. All Rights Reserved.</p>
+                </div>
+            </footer>
+        </div>
+    );
 }
 
-export default PricelistPage; //filename
+export default Products; // filename
