@@ -178,32 +178,32 @@ function LandingPage() {
             </section>
 
             {/* 3 Brands */}
-            <section className="brandsSection mt-5">
-            <div className="container">
-                <div className="row g-5">
-                {/* Brand 1 */}
-                <div className="col-12 col-sm-6 col-md-4 mb-4" data-aos="fade-up">
-                    <div className="brand">
-                    <img src="/brandDummy.png" alt="Brand 1" className="brandImg" />
-                    <button className="shopNowButton">Shop Now</button>
+            <section className="brand-section">
+                <div className="container">
+                <div className="d-flex flex-wrap flex-lg-nowrap justify-content-center brand-container">
+                    {/* Brand 1 */}
+                    <div className="brand-card" data-aos="fade-up" data-aos-duration="1000">
+                    <img src="https://via.placeholder.com/100" alt="Brand 1 Logo" />
+                    <h5>Brand 1</h5>
+                    <p>High-quality products for your lifestyle.</p>
+                    <button className="btn btn-primary shop-btn">Shop Now</button>
+                    </div>
+                    {/* Brand 2 */}
+                    <div className="brand-card" data-aos="fade-up" data-aos-duration="2000">
+                    <img src="https://via.placeholder.com/100" alt="Brand 2 Logo" />
+                    <h5>Brand 2</h5>
+                    <p>Innovative solutions for your everyday needs.</p>
+                    <button className="btn btn-primary shop-btn">Shop Now</button>
+                    </div>
+                    {/* Brand 3 */}
+                    <div className="brand-card" data-aos="fade-up" data-aos-duration="3000">
+                    <img src="https://via.placeholder.com/100" alt="Brand 3 Logo" />
+                    <h5>Brand 3</h5>
+                    <p>Trusted by professionals worldwide.</p>
+                    <button className="btn btn-primary shop-btn">Shop Now</button>
                     </div>
                 </div>
-                {/* Brand 2 */}
-                <div className="col-12 col-sm-6 col-md-4 mb-4" data-aos="fade-up">
-                    <div className="brand">
-                    <img src="/brandDummy.png" alt="Brand 2" className="brandImg" />
-                    <button className="shopNowButton">Shop Now</button>
-                    </div>
                 </div>
-                {/* Brand 3 */}
-                <div className="col-12 col-sm-6 col-md-4 mb-4" data-aos="fade-up">
-                    <div className="brand">
-                    <img src="/brandDummy.png" alt="Brand 3" className="brandImg" />
-                    <button className="shopNowButton">Shop Now</button>
-                    </div>
-                </div>
-                </div>
-            </div>
             </section>
 
 
@@ -213,7 +213,7 @@ function LandingPage() {
             Top Seller
             <a href="#">View all</a>
             </h3>
-            <div className="itemsContainer mt-5">
+            <div className="itemsContainer mt-5" data-aos="fade-up">
             {/* Product 1 */}
             <div className="item">
                 <img src="200x200.png" alt="Product 1" className="img-fluid" />
@@ -263,7 +263,7 @@ function LandingPage() {
             New Arrivals
             <a href="#">View all</a>
             </h3>
-            <div className="itemsContainer">
+            <div className="itemsContainer" data-aos="fade-up">
             {/* Product 1 */}
             <div className="item">
                 <img src="200x200.png" alt="Product 1" className="img-fluid" />
@@ -306,18 +306,18 @@ function LandingPage() {
             </div>
         </section>
         {/*HR SOLID RED*/}
-        <div className='mt-5' style={{ height: '5px', backgroundColor: 'red', width: '100%' }}></div>
+        <div className='mt-5' data-aos="fade-up" style={{ height: '5px', backgroundColor: 'red', width: '100%' }}></div>
 
         {/*FEATURE OF PAYMENT*/}
         <section className="payment-feature mt-5">
-        <div className="payment-images">
+        <div className="payment-images" >
             {/*Provide 130x100 for picture if ever need to change*/}
-            <img src="mop1.png" alt="Payment Option 1" />
-            <img src="mop2.png" alt="Payment Option 2" />
-            <img src="mop3.png" alt="Payment Option 3" />
+            <img src="mop1.png" alt="Payment Option 1" data-aos="fade-up" data-aos-duration="1000" />
+            <img src="mop2.png" alt="Payment Option 2" data-aos="fade-up" data-aos-duration="2000" />
+            <img src="mop3.png" alt="Payment Option 3" data-aos="fade-up" data-aos-duration="3000" />
         </div>
-        <h3>The Future of Online Motorbike Parts Purchasing</h3>
-        <p>
+        <h3 data-aos="fade-up">The Future of Online Motorbike Parts Purchasing</h3>
+        <p data-aos="fade-up">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid error
             praesentium tempora perferendis debitis autem sit suscipit provident
             possimus architecto quas, recusandae, cupiditate necessitatibus! Nobis nemo

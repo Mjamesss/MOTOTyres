@@ -1,102 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Top Sellers & New Arrivals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Feature Brands Section</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .brand-section {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+        }
 
-  <style>
-    /* Universal selector to reset margin, padding, and box-sizing for all elements */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter';
-    }
+        .brand-card {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            flex: 1;
+            margin: 0 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-    /* Styling for the Top Seller and New Arrivals Section */
-    
-  </style>
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .brand-card img {
+            max-width: 100px;
+            margin-bottom: 15px;
+        }
+
+        .shop-btn {
+            margin-top: 10px;
+        }
+
+        .brand-container {
+            overflow-x: auto; /* Allow horizontal scrolling on smaller devices */
+            white-space: nowrap; /* Prevent wrapping of child elements */
+        }
+
+        .brand-container > .brand-card {
+            display: inline-block; /* Ensure cards stay inline */
+            white-space: normal; /* Allow text wrapping inside the card */
+        }
+    </style>
 </head>
 <body>
-  <section class="itemsSection mt-5 ">
-    <h3 class="mt-2">Top Seller
-      <a href="#">View all</a>
-    </h3>
-    <div class="itemsContainer mt-5">
-      <div class="item">
-        <img src="200x200.png" alt="Product 1" class="img-fluid" />
-        <h5>₱3,499.00
-          <h6>₱3,499.00</h6>
-        </h5>
-        <p>Toyota Yamaha</p>
-        <button class="addToCartButton">Add to Cart</button>
-      </div>
-      <div class="item">
-        <img src="topseller.jpg" alt="Product 2" class="img-fluid" />
-        <h5>₱2,999.00</h5>
-        <p>Honda CBR</p>
-        <button class="addToCartButton">Add to Cart</button>
-      </div>
-      <div class="item">
-        <img src="topseller.jpg" alt="Product 3" class="img-fluid" />
-        <h5>₱4,000.00</h5>
-        <p>Yamaha MT-09</p>
-        <button class="addToCartButton">Add to Cart</button>
-      </div>
-      <div class="item">
-        <img src="topseller.jpg" alt="Product 4" class="img-fluid" />
-        <h5>₱5,200.00</h5>
-        <p>BMW S1000RR</p>
-        <button class="addToCartButton">Add to Cart</button>
-      </div>
-      <div class="item">
-        <img src="topseller.jpg" alt="Product 5" class="img-fluid" />
-        <h5>₱2,500.00</h5>
-        <p>Kawasaki Ninja</p>
-        <button class="addToCartButton">Add to Cart</button>
-      </div>
-      
-    </div>
-  </section>
-  <section class="itemsSection mt-5">
-    <h3 class="mt-2">New arrivals
-      <a href="#">View all</a>
-    </h3>
-    <div class="itemsContainer">
-      <div class="item">
-        <img src="topseller.jpg" alt="Product 1" class="img-fluid" />
-        <h5>₱3,499.00</h5>
-        <p>Toyota Yamaha</p>
-        <button class="addToCartButton">Add to Cart</button>
-      </div>
-      <div class="item">
-        <img src="topseller.jpg" alt="Product 2" class="img-fluid" />
-        <h5>₱2,999.00</h5>
-        <p>Honda CBR</p>
-        <button class="addToCartButton">Add to Cart</button>
-      </div>
-      <div class="item">
-        <img src="topseller.jpg" alt="Product 3" class="img-fluid" />
-        <h5>₱4,000.00</h5>
-        <p>Yamaha MT-09</p>
-        <button class="addToCartButton">Add to Cart</button>
-      </div>
-      <div class="item">
-        <img src="topseller.jpg" alt="Product 4" class="img-fluid" />
-        <h5>₱5,200.00</h5>
-        <p>BMW S1000RR</p>
-        <button class="addToCartButton">Add to Cart</button>
-      </div>
-      <div class="item">
-        <img src="topseller.jpg" alt="Product 5" class="img-fluid" />
-        <h5>₱2,500.00</h5>
-        <p>Kawasaki Ninja</p>
-        <button class="addToCartButton">Add to Cart</button>
-      </div>
-    </div>
-  </section>
+    <!-- Feature Brands Section -->
+    <section class="brand-section">
+        <div class="container">
+            <div class="d-flex flex-wrap flex-lg-nowrap justify-content-center brand-container">
+                <!-- Brand 1 -->
+                <div class="brand-card">
+                    <img src="https://via.placeholder.com/100" alt="Brand 1 Logo">
+                    <h5>Brand 1</h5>
+                    <p>High-quality products for your lifestyle.</p>
+                    <button class="btn btn-primary shop-btn">Shop Now</button>
+                </div>
+                <!-- Brand 2 -->
+                <div class="brand-card">
+                    <img src="https://via.placeholder.com/100" alt="Brand 2 Logo">
+                    <h5>Brand 2</h5>
+                    <p>Innovative solutions for your everyday needs.</p>
+                    <button class="btn btn-primary shop-btn">Shop Now</button>
+                </div>
+                <!-- Brand 3 -->
+                <div class="brand-card">
+                    <img src="https://via.placeholder.com/100" alt="Brand 3 Logo">
+                    <h5>Brand 3</h5>
+                    <p>Trusted by professionals worldwide.</p>
+                    <button class="btn btn-primary shop-btn">Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
