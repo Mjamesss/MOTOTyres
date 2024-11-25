@@ -208,12 +208,12 @@ function LandingPage() {
 
 
                 {/* Top seller section */}
-            <section className="itemsSection mt-5">
+            <section className="itemsSection mt-5" data-aos="fade-up">
             <h3 className="mt-2">
             Top Seller
             <a href="#">View all</a>
             </h3>
-            <div className="itemsContainer mt-5" data-aos="fade-up">
+            <div className="itemsContainer mt-5">
             {/* Product 1 */}
             <div className="item">
                 <img src="200x200.png" alt="Product 1" className="img-fluid" />
