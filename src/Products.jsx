@@ -59,100 +59,164 @@ function Products() { // file name
             {/* Navbar */}
             <nav className="navbar navbar-expand-lg navbar-dark bg-black">
                 <div className="container-fluid">
-                    {/* Hamburger Menu */}
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav"
-                        aria-controls="navbarNav"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <img src="/hamburger-menu.png" alt="Menu" className="hamburger-icon" />
-                    </button>
-
-                    {/* Logo */}
-                    <img src="/mototyres_logo 1.png" alt="Mototyres Logo" className="mototyres-logo" />
-
-                    {/* Collapsible Content */}
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <a className="nav-link" href="/" style={{ color: 'white' }}>
-                                    Home
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="Products" style={{ color: 'white' }}>
-                                    Products
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="Categories" style={{ color: 'white' }}>
-                                    Categories
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/PricelistPage" className="nav-link" style={{ color: 'white' }}>
-                                    Pricelist
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/" className="nav-link" style={{ color: 'white' }}>
-                                    Me
-                                </Link>
-                            </li>
-                            <input
-                                type="text"
-                                id="searchInputMobile"
-                                className="search-input"
-                                placeholder="Search..."
-                            />
-                        </ul>
-                    </div>
-
-                    {/* Search and Log In in Mobile View (Outside of Hamburger) */}
-                    <div className="d-flex align-items-center ms-auto d-lg-none">
-                        <div className="d-flex align-items-center ms-5">
-                            <span
-                                className="nav-link ms-3"
-                                style={{ color: 'white', cursor: 'pointer' }}
-                                onClick={toggleModal} // Trigger modal toggle
-                            >
-                                Log In
-                            </span>
-                        </div>
-                    </div>
-                    <div className="d-flex align-items-center ms-5" id="noneDisplay">
-                        <span
-                            className="nav-link ms-3"
-                            style={{ color: 'white', cursor: 'pointer' }}
-                            onClick={toggleModal} // Trigger modal toggle
+                {/* Hamburger Menu */}
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <img src="hamburger-menu.png" alt="Menu" className="hamburger-icon" />
+                </button>
+                {/* Logo */}
+                <a className="navbar-brand" href="#">
+                    <img
+                    src="mototyres_logo 1.png"
+                    alt="Mototyres Logo"
+                    />
+                </a>
+                {/* Navbar Links */}
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
+                    <li className="nav-item">
+                        <a className="nav-link" href="/" style={{ color: "white" }}>
+                        
+                        Home
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/Products" style={{ color: "white" }}>
+                        Products
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="" style={{ color: "white" }}>
+                        Categories
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a
+                        className="nav-link"
+                        href="/PricelistPage"
+                        style={{ color: "white" }}
                         >
-                            Log In
-                        </span>
-                    </div>
+                        Pricelist
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/" style={{ color: "white" }}>
+                        Me
+                        </a>
+                    </li>
+                    </ul>
+                    <button
+                    className="btn btn-login-signup ms-3 bg-primary" style={{ color: "white" }}
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                    >
+                    Log In
+                    </button>
+                    {/* Search Button */}
+                    <button
+                    className="btn search-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#searchModal"
+                    >
+                    <img src="search (2).png" alt="Search" />
+                    </button>
+                    {/* Log In/Sign Up Button */}
+                </div>
                 </div>
             </nav>
-
-            {/* Modal Component */}
-            {showModal && (
-                <div className="modalOverlay" onClick={closeModal}>
-                    <div className="modalContainer" onClick={(e) => e.stopPropagation()}>
-                        <span className="closeButton" onClick={closeModal}>X</span>
-                        <div className="modalContent">
-                            <h2>Log In</h2>
-                            <input type="email" id="user" placeholder="Enter your username" />
-                            <input type="password" id="pass" placeholder="Enter your password" />
-                            <button id="enter">Log In</button>
-                            <hr />
-                            <span id="forgotPassword">Forgot Password?</span><br />
-                            <p>Don't have an account? <span id="createAccount">Create account</span></p>
-                        </div>
+            {/* Search Modal */}
+            <div
+                className="modal fade"
+                id="searchModal"
+                tabIndex={-1}
+                aria-labelledby="searchModalLabel"
+                aria-hidden="true"
+            > 
+                <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                    <h5 className="modal-title" id="searchModalLabel">
+                        Search
+                    </h5>
+                    <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    />
+                    </div>
+                    <div className="modal-body">
+                    <input type="text" className="form-control" placeholder="Search..." />
                     </div>
                 </div>
-            )}
+                </div>
+            </div>
+            {/* Login Modal */}
+            <div
+                className="modal fade"
+                id="loginModal"
+                tabIndex={-1}
+                aria-labelledby="loginModalLabel"
+                aria-hidden="true"
+            >
+                <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                    <h5 className="modal-title" id="loginModalLabel">
+                        Log In
+                    </h5>
+                    <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    />
+                    </div>
+                    <div className="modal-body">
+                    <form>
+                        <div className="mb-3">
+                        <label htmlFor="username" className="form-label">
+                            Username
+                        </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="username"
+                            placeholder="Enter your username"
+                        />
+                        </div>
+                        <div className="mb-3">
+                        <label htmlFor="password" className="form-label">
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            id="password"
+                            placeholder="Enter your password"
+                        />
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100">
+                        Log In
+                        </button>
+                    </form>
+                    <div className="mt-3 text-center">
+                        <span className="text-muted">Don't have an account?</span>
+                        <a href="#" className="text-decoration-none">
+                        Sign Up
+                        </a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
 
             {/* Your additional content (Sections, etc.) */}
             <h3 id="titleH3">Products</h3>
@@ -268,30 +332,37 @@ function Products() { // file name
 
                 {/* Item 200x200 image fetch to db */}
                 <div className="products-section">
-                <div className="product-list">
-                    {products.map((product) => (
-                        <div key={product._id} className="product-item">
-                            <img src={`http://localhost:5000/images/${product.image}`} alt={product.name} className="product-image" />
-                            <h3>{product.name}</h3>
-                            <p className="product-brand">Brand: {product.brand}</p>
-                            <p className="product-unit">Unit: {product.unit}</p>
-                            <p className="product-price">
-                                <span className="discounted-price">${product.price}</span>
-                                <span className="original-price">${product.originalPrice}</span>
-                            </p>
-                            <div className="product-actions">
-                                <button className="add-to-cart-btn">Add to Cart</button>
-                                <img
-                                    src={isInWishlist ? 'fillHeart.png' : 'heart.png'}
-                                    alt="Wishlist"
-                                    className="wishlist-icon"
-                                    onClick={toggleWishlist}
-                                />
+                    <div className="product-list">
+                        {products.map((product) => (
+                            <div key={product._id} className="product-item">
+                                {/* Link should only wrap image, name, and brand */}
+                                <a className="toNextPage" href="/ViewItem">
+                                    <img src={`http://localhost:5000/images/${product.image}`} alt={product.name} className="product-image" />
+                                    <h3>{product.name}</h3>
+                                    <p className="product-brand">Brand: {product.brand}</p>
+                                </a>
+                                <p className="product-unit">Unit: {product.unit}</p>
+                                <p className="product-price">
+                                    <span className="discounted-price">${product.price}</span>
+                                    <span className="original-price">${product.originalPrice}</span>
+                                </p>
+
+                                {/* Product actions (Add to Cart and Wishlist) should not be inside the link */}
+                                <div className="product-actions">
+                                    <button className="add-to-cart-btn">Add to Cart</button>
+                                    <img
+                                        src={isInWishlist ? 'fillHeart.png' : 'heart.png'}
+                                        alt="Wishlist"
+                                        className="wishlist-icon"
+                                        onClick={toggleWishlist}
+                                    />
+                                </div>
                             </div>
+                            ))}
                         </div>
-                    ))}
                     </div>
-                </div>
+
+                
             </div>
 
             <footer className="bg-black text-white">

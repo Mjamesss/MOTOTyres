@@ -101,7 +101,7 @@ hr {
     .filter-btn {
         display: flex;
         position: absolute;
-        top: 20px;
+        top: 100px;
         right: 20px;
         border: none;
         padding: 10px 20px;
