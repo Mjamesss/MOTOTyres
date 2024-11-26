@@ -1,0 +1,233 @@
+/* Adjusted the positioning of the main title */
+#titleH3{
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px; /* Space below the main title */
+  }
+
+
+  /* Star Rating Styling */
+  .star-rating {
+    font-size: 1.2rem;
+    color: gold;
+  }
+
+  /* Brand Styling */
+  .brand {
+    font-size: 1rem;
+    font-weight: lighter;
+    margin-bottom: 1rem;
+    color: rgb(0, 0, 0);
+  }
+  .unit {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  /* Stock Text */
+  .text-success {
+    font-size: 1rem;
+  }
+
+
+  /* Button Spacing */
+  .btn {
+    border-radius: 25px;
+  }
+
+  /* Box Styling */
+  .info-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+  }
+  .payment-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+  }
+  .payment-box img {
+    width: 100px;
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  .info-box h6 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .info-box img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+  }
+
+  .info-box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .info-box ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  .info-box ul li img {
+    margin-right: 10px;
+  }
+  .review-item {
+    justify-content: space-between;
+  }
+
+  .stars {
+    font-size: 1rem;
+    white-space: nowrap;
+    color: green;
+  }
+
+  .review-progress {
+    flex-grow: 1;
+    max-width: 60%;
+    height: 1rem;
+  }
+
+  .percentage {
+    font-size: 0.9rem;
+    min-width: 50px;
+    text-align: right;
+  }
+
+  @media (max-width: 576px) {
+    .review-item {
+      flex-wrap: wrap;
+    }
+
+    .stars, .percentage {
+      flex: 1 1 100%;
+      text-align: center;
+    }
+
+    .review-progress {
+      max-width: 100%;
+    }
+    }
+    .review-item {
+      background-color: #f9f9f9;
+    }
+  
+    .stars {
+      font-size: 1.3rem;
+      color: gold;
+      white-space: nowrap;
+    }
+  
+    .review-date {
+      font-size: 0.9rem;
+    }
+  
+    .user-name {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+  
+    .product-name {
+      font-size: 0.9rem;
+    }
+  
+    .review-text {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+  
+    .review-img {
+      max-width: 150px;
+      height: auto;
+      margin-top: 10px;
+    }
+    /*Related Item css*/
+    .related-item {
+      background-color: #D9D9D9; /* Light gray background */
+      color: black; /* Black text color */
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  
+    .related-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+  
+    .related-item .item-title {
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+  
+    .related-item .item-description {
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+  
+    .related-item button {
+      margin-top: 10px;
+    }
+    /* Mobile responsiveness for related items */
+@media (max-width: 767px) {
+    .related-item {
+      background-color: #d4d4d4; /* Light gray background */
+      color: black; /* Black text color */
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  
+    .related-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+  
+    .related-item .item-title {
+      font-size: 1rem; /* Smaller title font */
+      margin-top: 8px;
+    }
+  
+    .related-item .item-description {
+      font-size: 0.8rem; /* Smaller description font */
+      margin-top: 5px;
+    }
+  
+    .related-item button {
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+  
+    /* Adjust grid for mobile */
+    .related-items .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .related-item {
+      flex: 1 1 100%; /* Full-width items on mobile */
+      margin: 10px 0;
+    }
+  
+    .col-lg-2, .col-md-4, .col-sm-6 {
+      flex: 1 1 100%; /* Make all items take full width on mobile */
+      max-width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+  

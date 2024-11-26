@@ -93,7 +93,7 @@ function Products() { // file name
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="" style={{ color: "white" }}>
+                        <a className="nav-link" href="/Categories" style={{ color: "white" }}>
                         Categories
                         </a>
                     </li>
@@ -359,6 +359,36 @@ function Products() { // file name
                                 </div>
                             </div>
                             ))}
+                        </div>
+                    </div>
+
+                    {/* Fake data remove if backend development is ongoing */}
+                <div className="products-section">
+                    <div className="product-list">
+                            <div className="product-item">
+                                {/* Link should only wrap image, name, and brand */}
+                                <a className="toNextPage" href="/ViewItem">
+                                    <img className="product-image" />
+                                    <h3>This is fetched from DB</h3>
+                                    <p className="product-brand">Click to check our UI</p>
+                                </a>
+                                <p className="product-unit"></p>
+                                <p className="product-price">
+                                    <span className="discounted-price"></span>
+                                    <span className="original-price"></span>
+                                </p>
+
+                                {/* Product actions (Add to Cart and Wishlist) should not be inside the link */}
+                                <div className="product-actions">
+                                    <button className="add-to-cart-btn">Add to Cart</button>
+                                    <img
+                                        src={isInWishlist ? 'fillHeart.png' : 'heart.png'}
+                                        alt="Wishlist"
+                                        className="wishlist-icon"
+                                        onClick={toggleWishlist}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 

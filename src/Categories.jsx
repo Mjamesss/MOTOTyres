@@ -16,6 +16,15 @@ function Categories() { //file name
         const query = document.getElementById('searchInput').value;
         console.log('Search Query:', query); // You can replace this with actual search functionality
     };
+
+     // Initialize AOS inside useEffect hook (this is the correct place)
+     useEffect(() => {
+        AOS.init({
+            duration: 1200, // Animation duration in milliseconds
+            offset: 200, //
+            once: true, // Animation should happen only once
+        });
+    }, []); // Empty dependency array ensures this runs only once when component mounts
   
     return (
         <div>
@@ -192,7 +201,7 @@ function Categories() { //file name
                 <div className="row">
                 {/* Category Item 1 */}
                 <article className="col-md-4 mb-4 col-6">
-                    <div className="category-item">
+                    <div className="category-item" data-aos="fade-up" data-aos-duration="1000">
                     <a href="" className="d-block">
                         <img src="200x200.png" alt="Category 1" className="img-fluid" />
                         <h4>Category 1</h4>
@@ -201,7 +210,7 @@ function Categories() { //file name
                 </article>
                 {/* Category Item 2 */}
                 <article className="col-md-4 mb-4 col-6">
-                    <div className="category-item">
+                    <div className="category-item" data-aos="fade-up" data-aos-duration="2000">
                     <a href="#" className="d-block">
                         <img
                         src="https://via.placeholder.com/200"
@@ -214,7 +223,7 @@ function Categories() { //file name
                 </article>
                 {/* Category Item 3 */}
                 <article className="col-md-4 mb-4 col-6">
-                    <div className="category-item">
+                    <div className="category-item" data-aos="fade-up" data-aos-duration="3000">
                     <a href="#" className="d-block">
                         <img
                         src="https://via.placeholder.com/200"
@@ -227,7 +236,7 @@ function Categories() { //file name
                 </article>
                 {/* Category Item 4 */}
                 <article className="col-md-4 mb-4 col-6">
-                    <div className="category-item">
+                    <div className="category-item" data-aos="fade-up" data-aos-duration="1000">
                     <a href="#" className="d-block">
                         <img
                         src="https://via.placeholder.com/200"
@@ -235,6 +244,32 @@ function Categories() { //file name
                         className="img-fluid"
                         />
                         <h4>Category 4</h4>
+                    </a>
+                    </div>
+                </article>
+                 {/* Category Item 4 */}
+                 <article className="col-md-4 mb-4 col-6">
+                    <div className="category-item" data-aos="fade-up" data-aos-duration="2000">
+                    <a href="#" className="d-block">
+                        <img
+                        src="https://via.placeholder.com/200"
+                        alt="Category 4"
+                        className="img-fluid"
+                        />
+                        <h4>Category 5</h4>
+                    </a>
+                    </div>
+                </article>
+                 {/* Category Item 4 */}
+                 <article className="col-md-4 mb-4 col-6">
+                    <div className="category-item" data-aos="fade-up" data-aos-duration="3000">
+                    <a href="#" className="d-block">
+                        <img
+                        src="https://via.placeholder.com/200"
+                        alt="Category 4"
+                        className="img-fluid"
+                        />
+                        <h4>Category 6</h4>
                     </a>
                     </div>
                 </article>
