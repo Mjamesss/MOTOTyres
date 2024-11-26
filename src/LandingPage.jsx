@@ -254,21 +254,21 @@ function LandingPage() {
                     <img src="https://via.placeholder.com/100" alt="Brand 1 Logo" />
                     <h5>Brand 1</h5>
                     <p>High-quality products for your lifestyle.</p>
-                    <button className="btn btn-primary shop-btn">Shop Now</button>
+                    <button className="btn btn-dark shop-btn">Shop Now</button>
                     </div>
                     {/* Brand 2 */}
                     <div className="brand-card" data-aos="fade-up" data-aos-duration="2000">
                     <img src="https://via.placeholder.com/100" alt="Brand 2 Logo" />
                     <h5>Brand 2</h5>
                     <p>Innovative solutions for your everyday needs.</p>
-                    <button className="btn btn-primary shop-btn">Shop Now</button>
+                    <button className="btn btn-dark shop-btn">Shop Now</button>
                     </div>
                     {/* Brand 3 */}
                     <div className="brand-card" data-aos="fade-up" data-aos-duration="3000">
                     <img src="https://via.placeholder.com/100" alt="Brand 3 Logo" />
                     <h5>Brand 3</h5>
                     <p>Trusted by professionals worldwide.</p>
-                    <button className="btn btn-primary shop-btn">Shop Now</button>
+                    <button className="btn btn-dark shop-btn">Shop Now</button>
                     </div>
                 </div>
                 </div>
@@ -276,103 +276,106 @@ function LandingPage() {
 
 
                 {/* Top seller section */}
+            {/* Top seller section */}
             <section className="itemsSection mt-5" data-aos="fade-up">
-            <h3 className="mt-2">
-            Top Seller
-            <a href="#">View all</a>
-            </h3>
-            <div className="itemsContainer mt-5">
-            {/* Product 1 */}
-            <div className="item">
-                <img src="200x200.png" alt="Product 1" className="img-fluid" />
-                <h5>₱3,499.00</h5>
-                <h6>₱3,499.00</h6>
-                <p>Toyota Yamaha</p>
-                <button className="addToCartButton">Add to Cart</button>
-            </div>
+                <h3 className="mt-2">
+                    Top Seller
+                    <a href="#">View all</a>
+                </h3>
+                <div className="itemsContainer mt-5">
+                    {/* Product 1 */}
+                    <div className="item">
+                        <img src="200x200.png" alt="Product 1" className="img-fluid" />
+                        <h5>₱3,499.00</h5>
+                        <h6>₱3,499.00</h6>
+                        <p>Toyota Yamaha</p>
+                        <button className="btn btn-dark">Add to Cart</button>
+                    </div>
 
-            {/* Product 2 */}
-            <div className="item">
-                <img src="200x200.png" alt="Product 2" className="img-fluid" />
-                <h5>₱2,999.00</h5>
-                <p>Honda CBR</p>
-                <button className="addToCartButton">Add to Cart</button>
-            </div>
+                    {/* Product 2 */}
+                    <div className="item">
+                        <img src="200x200.png" alt="Product 2" className="img-fluid" />
+                        <h5>₱2,999.00</h5>
+                        <p>Honda CBR</p>
+                        <button className="btn btn-dark">Add to Cart</button>
+                    </div>
 
-            {/* Product 3 */}
-            <div className="item">
-                <img src="200x200.png" alt="Product 3" className="img-fluid" />
-                <h5>₱4,000.00</h5>
-                <p>Yamaha MT-09</p>
-                <button className="addToCartButton">Add to Cart</button>
-            </div>
+                    {/* Product 3 */}
+                    <div className="item">
+                        <img src="200x200.png" alt="Product 3" className="img-fluid" />
+                        <h5>₱4,000.00</h5>
+                        <p>Yamaha MT-09</p>
+                        <button className="btn btn-dark">Add to Cart</button>
+                    </div>
 
-            {/* Product 4 */}
-            <div className="item">
-                <img src="200x200.png" alt="Product 4" className="img-fluid" />
-                <h5>₱5,200.00</h5>
-                <p>BMW S1000RR</p>
-                <button className="addToCartButton">Add to Cart</button>
-            </div>
+                    {/* Product 4 */}
+                    <div className="item">
+                        <img src="200x200.png" alt="Product 4" className="img-fluid" />
+                        <h5>₱5,200.00</h5>
+                        <p>BMW S1000RR</p>
+                        <button className="btn btn-dark">Add to Cart</button>
+                    </div>
 
-            {/* Product 5 */}
-            <div className="item">
-                <img src="200x200.png" alt="Product 5" className="img-fluid" />
-                <h5>₱2,500.00</h5>
-                <p>Kawasaki Ninja</p>
-                <button className="addToCartButton">Add to Cart</button>
-            </div>
-            </div>
-        </section>
+                    {/* Product 5 */}
+                    <div className="item">
+                        <img src="200x200.png" alt="Product 5" className="img-fluid" />
+                        <h5>₱2,500.00</h5>
+                        <p>Kawasaki Ninja</p>
+                        <button className="btn btn-dark">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
 
-        {/* New Arrivals Section */}
-        <section className="itemsSection mt-5">
-            <h3 className="mt-2">
-            New Arrivals
-            <a href="#">View all</a>
-            </h3>
-            <div className="itemsContainer mt-5" data-aos="fade-up">
-            {/* Product 1 */}
-            <div className="item">
-                <img src="200x200.png" alt="Product 1" className="img-fluid" />
-                <h5>₱3,499.00</h5>
-                <p>Toyota Yamaha</p>
-                <button className="addToCartButton">Add to Cart</button>
-            </div>
+            {/* New Arrivals Section */}
+            <section className="itemsSection mt-5">
+                <h3 className="mt-2">
+                    New Arrivals
+                    <a href="#">View all</a>
+                </h3>
+                <div className="itemsContainer mt-5" data-aos="fade-up">
+                    {/* Product 1 */}
+                    <div className="item">
+                        <img src="200x200.png" alt="Product 1" className="img-fluid" />
+                        <h5>₱3,499.00</h5>
+                        <p>Toyota Yamaha</p>
+                        <button className="btn btn-dark">Add to Cart</button>
+                    </div>
 
-            {/* Product 2 */}
-            <div className="item">
-                <img src="200x200.png" alt="Product 2" className="img-fluid" />
-                <h5>₱2,999.00</h5>
-                <p>Honda CBR</p>
-                <button className="addToCartButton">Add to Cart</button>
-            </div>
+                    {/* Product 2 */}
+                    <div className="item">
+                        <img src="200x200.png" alt="Product 2" className="img-fluid" />
+                        <h5>₱2,999.00</h5>
+                        <p>Honda CBR</p>
+                        <button className="btn btn-dark">Add to Cart</button>
+                    </div>
 
-            {/* Product 3 */}
-            <div className="item">
-                <img src="200x200.png" alt="Product 3" className="img-fluid" />
-                <h5>₱4,000.00</h5>
-                <p>Yamaha MT-09</p>
-                <button className="addToCartButton">Add to Cart</button>
-            </div>
+                    {/* Product 3 */}
+                    <div className="item">
+                        <img src="200x200.png" alt="Product 3" className="img-fluid" />
+                        <h5>₱4,000.00</h5>
+                        <p>Yamaha MT-09</p>
+                        <button className="btn btn-dark">Add to Cart</button>
+                    </div>
 
-            {/* Product 4 */}
-            <div className="item">
-                <img src="200x200.png" alt="Product 4" className="img-fluid" />
-                <h5>₱5,200.00</h5>
-                <p>BMW S1000RR</p>
-                <button className="addToCartButton">Add to Cart</button>
-            </div>
+                    {/* Product 4 */}
+                    <div className="item">
+                        <img src="200x200.png" alt="Product 4" className="img-fluid" />
+                        <h5>₱5,200.00</h5>
+                        <p>BMW S1000RR</p>
+                        <button className="btn btn-dark">Add to Cart</button>
+                    </div>
 
-            {/* Product 5 */}
-            <div className="item">
-                <img src="200x200.png" alt="Product 5" className="img-fluid" />
-                <h5>₱2,500.00</h5>
-                <p>Kawasaki Ninja</p>
-                <button className="addToCartButton">Add to Cart</button>
-            </div>
-            </div>
-        </section>
+                    {/* Product 5 */}
+                    <div className="item">
+                        <img src="200x200.png" alt="Product 5" className="img-fluid" />
+                        <h5>₱2,500.00</h5>
+                        <p>Kawasaki Ninja</p>
+                        <button className="btn btn-dark">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+
+
         {/*HR SOLID RED*/}
         <div className='mt-5' data-aos="fade-up" style={{ height: '5px', backgroundColor: 'red', width: '100%' }}></div>
 

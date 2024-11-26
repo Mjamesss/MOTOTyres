@@ -89,6 +89,7 @@
 
 .shop-btn {
     margin-top: 10px;
+    background-color: black
 }
 
 .brand-container {
@@ -169,11 +170,11 @@
   }
 
   .addToCartButton {
-    background-color: #D9D9D9;
-    color: black;
+    background-color: black;
+    color: white;
     border: none;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease;
