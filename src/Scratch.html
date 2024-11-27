@@ -3,424 +3,589 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Item View</title>
+  <title>Pricelist Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* Universal rule */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-    }
-    /* Adjusted the positioning of the main title */
-    #titleH3{
-      padding: 20px;
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 20px; /* Space below the main title */
-    }
+    /* Container to separate aside and main content */
+.filterContainer {
+  display: flex;
+  gap: 20px;
+  padding: 20px; /* Added padding to the container for spacing */
+}
 
+/* Aside section styling */
+aside {
+  width: 20%; /* Decreased width of the filter aside */
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  display: block;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+}
 
-    /* Star Rating Styling */
-    .star-rating {
-      font-size: 1.2rem;
-      color: gold;
-    }
+main {
+  width: 80%; /* Main content area width */
+  padding: 20px;
+}
 
-    /* Brand Styling */
-    .brand {
-      font-size: 1rem;
-      font-weight: lighter;
-      margin-bottom: 1rem;
-      color: rgb(0, 0, 0);
-    }
-    .unit {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
+/* Filter section styling */
+.filter section {
+  margin-bottom: 20px; /* Margin between filter sections */
+}
 
-    /* Stock Text */
-    .text-success {
-      font-size: 1rem;
-    }
+.filter h2 {
+  font-size: 1.25rem; /* Adjusted heading size */
+  margin-bottom: 10px; /* Added margin below headings */
+  font-weight: 600;
+}
 
+.filter label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px; /* Added space below labels */
+}
 
-    /* Button Spacing */
-    .btn {
-      border-radius: 25px;
-    }
+.form-control, .form-check-input {
+  margin-bottom: 10px; /* Space between inputs */
+}
+.form-control{
+  border-radius: 10px;
+}
 
-    /* Box Styling */
-    .info-box {
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 15px;
-      margin-top: 20px;
-      background-color: #f9f9f9;
-    }
-    .payment-box {
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 15px;
-      margin-top: 20px;
-      background-color: #f9f9f9;
-    }
-    .payment-box img {
-      width: 100px;
-      height: 50px;
-      margin-right: 10px;
-    }
+.form-check-label {
+  font-weight: normal;
+}
 
-    .info-box h6 {
-      font-size: 1rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+/* Adjusted the positioning of the main title */
+#titleH3{
+  padding: 20px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px; /* Space below the main title */
+}
 
-    .info-box img {
-      width: 35px;
-      height: 35px;
-      margin-right: 10px;
-    }
+/* Added margins between the filter sections */
+.filter p {
+  margin-bottom: 8px; /* Added margin to each filter item */
+}
 
-    .info-box ul {
-      list-style: none;
-      padding: 0;
-    }
+hr {
+  margin: 20px 0; /* Spacing between sections */
+}
+.filter-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
 
-    .info-box ul li {
+.filter-modal-content {
+  background-color: white;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.filter-btn {
+  display: none;
+}
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+  .filterContainer {
+      display: block; /* Stack filter and main content vertically on small screens */
+  }
+
+  aside {
+      display: none; /* Hide aside on mobile */
+  }
+
+  /* Filter modal button */
+  .filter-btn {
       display: flex;
-      align-items: center;
-      margin-bottom: 5px;
-    }
+      position: absolute;
+      top: 100px;
+      right: 20px;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1000; /* Ensure button is above other content */
+      
+  }
 
-    .info-box ul li img {
-      margin-right: 10px;
-    }
-    .review-item {
-      justify-content: space-between;
-    }
-  
-    .stars {
-      font-size: 1rem;
-      white-space: nowrap;
-      color: green;
-    }
-  
-    .review-progress {
-      flex-grow: 1;
-      max-width: 60%;
-      height: 1rem;
-    }
-  
-    .percentage {
-      font-size: 0.9rem;
-      min-width: 50px;
-      text-align: right;
-    }
-  
-    @media (max-width: 576px) {
-      .review-item {
-        flex-wrap: wrap;
-      }
-  
-      .stars, .percentage {
-        flex: 1 1 100%;
-        text-align: center;
-      }
-  
-      .review-progress {
-        max-width: 100%;
-      }
-      }
-      .review-item {
-        background-color: #f9f9f9;
-      }
-    
-      .stars {
-        font-size: 1.3rem;
-        color: gold;
-        white-space: nowrap;
-      }
-    
-      .review-date {
-        font-size: 0.9rem;
-      }
-    
-      .user-name {
-        font-weight: bold;
-        font-size: 1rem;
-      }
-    
-      .product-name {
-        font-size: 0.9rem;
-      }
-    
-      .review-text {
-        font-size: 0.9rem;
-        line-height: 1.4;
-      }
-    
-      .review-img {
-        max-width: 150px;
-        height: auto;
-        margin-top: 10px;
-      }
-      /*Related Item css*/
-      .related-item {
-        background-color: #D9D9D9; /* Light gray background */
-        color: black; /* Black text color */
-        text-align: center;
-        padding: 20px;
-        border-radius: 8px;
-      }
-    
-      .related-item img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 5px;
-      }
-    
-      .related-item .item-title {
-        font-size: 1.1rem;
-        margin-top: 10px;
-      }
-    
-      .related-item .item-description {
-        font-size: 0.9rem;
-        margin-top: 5px;
-      }
-    
-      .related-item button {
-        margin-top: 10px;
-      }
-    
+  .filter-modal {
+      position: absolute;
+      top: 30%;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+  }
+
+  .filter-modal-content {
+      background-color: #D9D9D9;
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .filter-modal.active {
+      display: flex; /* Show modal when active */
+  }
+}
+
+#titleH3{
+  padding: 20px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px; /* Space below the main title */
+}
+
+/*Pagination*/
+.container {
+  width: 80%;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+header h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+/* Search Section */
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-section input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Table Section */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.table th, .table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Pagination */
+.pricelistdata-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header {
+  flex: 1;
+}
+
+#titleH3 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.search-section {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#search {
+  width: 200px;
+  padding: 8px;
+}
+
+.pricelist-items {
+  margin-top: 20px;
+}
+
+#product-list {
+  list-style: none;
+  padding: 0;
+}
+
+.product-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-btn {
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.page-input {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+}
+
+
   </style>
 </head>
 <body>
-
-  <h3 id="titleH3">Fetch</h3>
-  <main class="container my-5">
-    <div class="row align-items-start item-section">
-      <!-- Right Image -->
-      <div class="col-lg-4 col-md-6 mb-4 mt-2">
-        <img src="https://via.placeholder.com/300" alt="Product Image" class="img-fluid rounded">
-      </div>
-      
-      <!-- Left Content -->
-      <div class="col-lg-4 col-md-6 mb-4 mt-2">
-        <div>
-          <h4 class="unit">Unit Name</h4>
-          <h5 class="brand">Brand Name</h5>
-          <div class="d-flex align-items-center mb-2">
-            <div class="star-rating me-2">★★★★☆</div>
-            <span>(150 reviews)</span>
-          </div>
-          <div class="mb-2 fw-bold" style="color: blue;">In Stock</div>
-          <hr>
-          <div class="price mb-3 fs-4 fw-bold">₱129.99</div>
-          <button id="wishlistButton" class="btn btn-outline-primary me-2">Add to Wishlist</button>
-          <button class="btn btn-dark">Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Right Boxes -->
-      <div class="col-lg-4 col-md-12">
-        <!-- Payment Options Box -->
-        <div class="payment-box">
-          <h6>Payment Options</h6>
-          <hr>
-          <div class="d-flex">
-            <img src="/gcash.png" alt="Visa">
-            <img src="/gcash.png"Mastercard">
-            <img src="/gcash.png" alt="PayPal">
-          </div>
-        </div>
-
-        <!-- Warranty Box -->
-        <div class="info-box">
-          <h6>Warranty Information</h6>
-          <hr>
-          <ul>
-            <li><img src="warranty.png" alt="Check"> 2-Year Manufacturer Warranty</li>
-            <li><img src="warranty.png" alt="Check"> 30-Day Money-Back Guarantee</li>
+ 
+  <div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+      <div class="container-fluid">
+        <!-- Hamburger Menu -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <img src="hamburger-menu.png" alt="Menu" class="hamburger-icon" />
+        </button>
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+          <img src="mototyres_logo 1.png" alt="Mototyres Logo" />
+        </a>
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/" style="color: white;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Products" style="color: white;">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Categories" style="color: white;">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/PricelistPage" style="color: white;">Pricelist</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/" style="color: white;">Me</a>
+            </li>
           </ul>
+          <button class="btn btn-login-signup ms-3 bg-primary" style="color: white;" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Log In
+          </button>
+          <!-- Search Button -->
+          <button class="btn search-btn" data-bs-toggle="modal" data-bs-target="#searchModal">
+            <img src="search (2).png" alt="Search" />
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="searchModalLabel">Search</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" class="form-control" placeholder="Search..." />
+          </div>
         </div>
       </div>
     </div>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Log In</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter your username" />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" />
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Log In</button>
+            </form>
+            <div class="mt-3 text-center">
+              <span class="text-muted">Don't have an account?</span>
+              <a href="#" class="text-decoration-none">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Filter Section -->
+    <div class="filterContainer">
+      <aside>
+        <section class="filter">
+          <!-- Categories Filter -->
+          <header>
+            <h2>Categories</h2>
+          </header>
+          <p>Category 1</p>
+          <p>Category 2</p>
+          <p>Category 3</p>
+          <p>Category 4</p>
+          <hr />
 
-    <!-- Divider -->
-    <hr><br>
+          <!-- Brands Filter -->
+          <header>
+            <h2>Brands</h2>
+          </header>
+          <p>Brand 1</p>
+          <p>Brand 2</p>
+          <p>Brand 3</p>
+          <p>Brand 4</p>
+          <hr />
 
-    <!-- Description Section -->
-    <section>
-      <h4>Description</h4>
-      <p>
-        This is a high-quality product designed to meet all your expectations. It features superior craftsmanship and cutting-edge technology to deliver excellent performance and durability.
-      </p>
-    </section>
-    <br>
+          <!-- Price Range Filter -->
+          <header>
+            <h2>Price Range</h2>
+          </header>
+          <label for="minPrice" class="form-label">Min Price: ₱</label>
+          <input type="number" class="form-control mb-3" id="minPrice" placeholder="Minimum" />
+          <label for="maxPrice" class="form-label">Max Price: ₱</label>
+          <input type="number" class="form-control mb-3" id="maxPrice" placeholder="Maximum" />
+          <hr />
+
+          <!-- Availability Filter -->
+          <header>
+            <h2>Availability</h2>
+          </header>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="inStock" />
+            <label class="form-check-label" for="inStock">In stock only</label>
+          </div>
+        </section>
+      </aside>
+      <!-- Main Content (Pricelist Header and Search Bar) -->
+      <main class="main-content">
+        <div class="container">
+          <!-- Pricelist Header -->
+          <header class="d-flex justify-content-between align-items-center mb-4">
+            <h1 id="titleH3" class="h3">Pricelist</h1>
+            <!-- Search Bar -->
+            <input type="text" id="search" class="form-control w-25" placeholder="Search products...">
+          </header>
+        
+          <!-- Pricelist Table with column headers -->
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Status</th> <!-- New Status Column -->
+                  <th scope="col" class="text-right">SRP</th>
+                </tr>
+              </thead>
+              <tbody id="product-list">
+                <!-- Dynamic Product List Items will be inserted here -->
+              </tbody>
+            </table>
+          </div>
+        
+          <!-- Pagination -->
+          <div class="d-flex justify-content-center align-items-center mt-4">
+            <button id="go-to-first" class="btn btn-outline-secondary mx-2">First</button>
+            <button id="prev-btn" class="btn btn-outline-secondary mx-2" style="font-weight:bolder ;"><<</button>
+        
+            <div class="input-group mx-2" style="width: 120px;">
+              <input type="number" id="page-input" class="form-control" min="1" value="1">
+              <div class="input-group-append">
+                <button id="go-to-page" class="btn btn-outline-primary">Go</button>
+              </div>
+            </div>
+        
+            <button id="next-btn" class="btn btn-outline-secondary mx-2" style="font-weight:bolder ;">>></button>
+            <button id="go-to-last" class="btn btn-outline-secondary mx-2" >Last</button>
+          </div>
+        </div>
+      </main>
+
+    </div>
+
     
-    <!-- Product Specification Section -->
-    <section>
-      <h4>Product Specifications</h4>
-      <ul>
-        <li>Durable material for long-lasting use</li>
-        <li>Compact and lightweight design</li>
-        <li>Available in multiple colors</li>
-        <li>Eco-friendly and sustainable manufacturing</li>
-      </ul>
-    </section>
-
-    <!-- Divider -->
-    <hr><br>
-
-    <!-- Customer Reviews Section -->
-    <section>
-      <h4>Customer Reviews</h4>
-      <div class="reviews">
-        <!-- 5-Star Reviews -->
-        <div class="d-flex align-items-center review-item mb-2">
-          <span class="stars me-2">★★★★★</span>
-          <div class="progress review-progress me-2">
-            <div class="progress-bar bg-success" style="width: 70%;"></div>
-          </div>
-          <span class="percentage">70%</span>
-        </div>
-        <!-- 4-Star Reviews -->
-        <div class="d-flex align-items-center review-item mb-2">
-          <span class="stars me-2">★★★★☆</span>
-          <div class="progress review-progress me-2">
-            <div class="progress-bar bg-info" style="width: 20%;"></div>
-          </div>
-          <span class="percentage">20%</span>
-        </div>
-        <!-- 3-Star Reviews -->
-        <div class="d-flex align-items-center review-item mb-2">
-          <span class="stars me-2">★★★☆☆</span>
-          <div class="progress review-progress me-2">
-            <div class="progress-bar bg-primary" style="width: 5%;"></div>
-          </div>
-          <span class="percentage">5%</span>
-        </div>
-        <!-- 2-Star Reviews -->
-        <div class="d-flex align-items-center review-item mb-2">
-          <span class="stars me-2">★★☆☆☆</span>
-          <div class="progress review-progress me-2">
-            <div class="progress-bar bg-warning" style="width: 3%;"></div>
-          </div>
-          <span class="percentage">3%</span>
-        </div>
-        <!-- 1-Star Reviews -->
-        <div class="d-flex align-items-center review-item">
-          <span class="stars me-2">★☆☆☆☆</span>
-          <div class="progress review-progress me-2">
-            <div class="progress-bar bg-danger" style="width: 2%;"></div>
-          </div>
-          <span class="percentage">2%</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Divider -->
-    <hr><br>
-
-    <!-- Reviews Section -->
-    <section>
-      <h4>Reviews</h4>
-      <div class="review-list">
-        <!-- Review Item 1 -->
-        <div class="review-item border rounded p-3 mb-4">
-          <div class="d-flex align-items-center justify-content-between">
-            <span class="stars">★★★★☆</span>
-            <span class="review-date text-muted">Nov 27, 2024</span>
-          </div>
-          <h6 class="user-name mt-2 mb-1">John Doe</h6>
-          <p class="product-name text-primary mb-2">Product: Pipe</p>
-          <p class="review-text mb-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni commodi assumenda porro soluta culpa facere ipsum est, laboriosam fuga molestiae suscipit similique eos praesentium beatae ducimus, quam aspernatur accusamus ex.
-          </p>
-          <img src="https://via.placeholder.com/150" alt="User review image" class="review-img img-fluid rounded">
-        </div>
-      </div>
-    </section>
-    <hr><br>
-    <!-- Related Items Section -->
-  <section class="related-items my-5">
-    <h3 class="text-center mb-4">Related Items</h3>
-    <div class="row">
-      <!-- Item 1 -->
-      <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-        <div class="related-item text-dark p-3 rounded">
-          <img src="https://via.placeholder.com/150" alt="Item 1" class="img-fluid mb-2">
-          <h5 class="item-title">Item 1</h5>
-          <p class="item-description">Description of Item 1</p>
-          <button class="btn btn-outline-dark w-100">View Item</button>
-        </div>
-      </div>
-
-      <!-- Item 2 -->
-      <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-        <div class="related-item text-dark p-3 rounded">
-          <img src="https://via.placeholder.com/150" alt="Item 2" class="img-fluid mb-2">
-          <h5 class="item-title">Item 2</h5>
-          <p class="item-description">Description of Item 2</p>
-          <button class="btn btn-outline-dark w-100">View Item</button>
-        </div>
-      </div>
-
-      <!-- Item 3 -->
-      <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-        <div class="related-item text-dark p-3 rounded">
-          <img src="https://via.placeholder.com/150" alt="Item 3" class="img-fluid mb-2">
-          <h5 class="item-title">Item 3</h5>
-          <p class="item-description">Description of Item 3</p>
-          <button class="btn btn-outline-dark w-100">View Item</button>
-        </div>
-      </div>
-
-      <!-- Item 4 -->
-      <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-        <div class="related-item  text-dark p-3 rounded">
-          <img src="https://via.placeholder.com/150" alt="Item 4" class="img-fluid mb-2">
-          <h5 class="item-title">Item 4</h5>
-          <p class="item-description">Description of Item 4</p>
-          <button class="btn btn-outline-dark w-100">View Item</button>
-        </div>
-      </div>
-
-      <!-- Item 5 -->
-      <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
-        <div class="related-item text-dark p-3 rounded">
-          <img src="https://via.placeholder.com/150" alt="Item 5" class="img-fluid mb-2">
-          <h5 class="item-title">Item 5</h5>
-          <p class="item-description">Description of Item 5</p>
-          <button class="btn btn-outline-dark w-100">View Item</button>
-        </div>
-      </div>
-    </div>
-  </section>
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.getElementById('wishlistButton').addEventListener('click', function () {
-      const button = this;
+    
   
-      // Toggle state
-      if (button.classList.contains('btn-primary')) {
-        button.classList.remove('btn-primary');
-        button.classList.add('btn-outline-primary');
-        button.textContent = 'Add to Wishlist';
-      } else {
-        button.classList.remove('btn-outline-primary');
-        button.classList.add('btn-primary');
-        button.textContent = 'Added to Wishlist';
-      }
+    <!-- Custom Script for Random Product Generation -->
+    <script>
+      const products = [
+  "Pipe", "Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse", "Monitor", "TV", 
+  "Smartwatch", "Tablet", "Camera", "Speaker", "Printer", "Router", "External Hard Drive", 
+  "USB Drive", "Webcam", "Flashlight", "Power Bank", "Charger", "Microphone"
+];
+
+// Function to generate random price
+function generateRandomPrice() {
+  return (Math.random() * (1000 - 50) + 50).toFixed(2); // Generates price between 50 and 1000
+}
+
+let allProducts = [];
+let filteredProducts = [];
+let currentPage = 1;
+const itemsPerPage = 19;
+
+// Function to generate 100 fake product data
+function generateProductData() {
+  allProducts = []; // Clear any existing data
+
+  for (let i = 0; i < 10000; i++) {
+    const productName = products[Math.floor(Math.random() * products.length)];
+    const productPrice = generateRandomPrice();
+    const productStatus = Math.random() < 0.7 ? "In Stock" : "Out of Stock"; // 70% chance of "In Stock"
+
+    allProducts.push({
+      id: i + 1,
+      name: productName,
+      status: productStatus,
+      price: productPrice,
     });
-  </script>
+  }
+
+  filteredProducts = [...allProducts];
+  displayProducts(currentPage);
+}
+
+// Function to display products on the current page
+function displayProducts(page) {
+  const tbody = document.getElementById('product-list');
+  tbody.innerHTML = ''; // Clear existing table rows
+
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const productsToDisplay = filteredProducts.slice(start, end);
+
+  productsToDisplay.forEach((product, index) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${start + index + 1}</td> <!-- Product Number -->
+      <td>${product.name}</td> <!-- Product Name -->
+      <td>${product.status}</td> <!-- Status Column -->
+      <td class="text-right">₱${product.price}</td> <!-- SRP -->
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('page-input').value = page;
+  document.getElementById('next-btn').disabled = page >= Math.ceil(filteredProducts.length / itemsPerPage);
+  document.getElementById('prev-btn').disabled = page <= 1;
+}
+
+// Event Listeners for Pagination
+document.getElementById('next-btn').addEventListener('click', () => {
+  if (currentPage < Math.ceil(filteredProducts.length / itemsPerPage)) {
+    currentPage++;
+    displayProducts(currentPage);
+  }
+});
+
+document.getElementById('prev-btn').addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
+    displayProducts(currentPage);
+  }
+});
+
+document.getElementById('go-to-first').addEventListener('click', () => {
+  currentPage = 1;
+  displayProducts(currentPage);
+});
+
+document.getElementById('go-to-last').addEventListener('click', () => {
+  currentPage = Math.ceil(filteredProducts.length / itemsPerPage);
+  displayProducts(currentPage);
+});
+
+document.getElementById('go-to-page').addEventListener('click', () => {
+  const page = parseInt(document.getElementById('page-input').value, 10);
+  if (page >= 1 && page <= Math.ceil(filteredProducts.length / itemsPerPage)) {
+    currentPage = page;
+    displayProducts(page);
+  }
+});
+
+// Search Functionality
+document.getElementById('search').addEventListener('input', (event) => {
+  const query = event.target.value.toLowerCase();
+  filteredProducts = allProducts.filter(product => 
+    product.name.toLowerCase().includes(query)
+  );
+  currentPage = 1;
+  displayProducts(currentPage);
+});
+
+// Initial Call
+generateProductData();
+
+    </script>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-black text-white">
+      <div class="text-center mt-4">
+        <p>&copy; 2024 Mototyres. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
   
+
+  <script>
+    function toggleFilter() {
+      const filterModal = document.getElementById('filterModal');
+      filterModal.style.display = filterModal.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
