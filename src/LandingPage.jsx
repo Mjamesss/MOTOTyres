@@ -58,7 +58,31 @@ function LandingPage() {
         showSlides(n);
     };
 
-  
+    //store location text animations
+    const textArray = [
+        "Find the nearest store to you and enjoy exclusive offers. Visit us today for the best shopping experience.",
+        "Our stores are located near you, offering great deals and fantastic products.",
+        "Looking for convenience? Our stores are just around the corner, ready to serve you.",
+        "Step into our store today and explore a wide variety of products at unbeatable prices."
+    ];
+
+    const [currentText, setCurrentText] = useState(textArray[0]);
+    const [fade, setFade] = useState(false);
+
+    useEffect(() => {
+        let currentTextIndex = 0;
+
+        const interval = setInterval(() => {
+            setFade(false); // Start fade-out
+            setTimeout(() => {
+                currentTextIndex = (currentTextIndex + 1) % textArray.length;
+                setCurrentText(textArray[currentTextIndex]);
+                setFade(true); // Trigger fade-in after text change
+            }, 500); // Wait for fade-out to complete
+        }, 4000); // Change text every 4 seconds
+
+        return () => clearInterval(interval); // Cleanup the interval on component unmount
+    }, []);
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-black">
@@ -277,7 +301,7 @@ function LandingPage() {
 
                 {/* Top seller section */}
             {/* Top seller section */}
-            <section className="itemsSection mt-5" data-aos="fade-up">
+            <section className="itemsSection" data-aos="fade-up">
                 <h3 className="mt-2">
                     Top Seller
                     <a href="#">View all</a>
@@ -294,7 +318,7 @@ function LandingPage() {
 
                     {/* Product 2 */}
                     <div className="item">
-                        <img src="200x200.png" alt="Product 2" className="img-fluid" />
+                        <img src="/200x200.png" alt="Product 2" className="img-fluid" />
                         <h5>₱2,999.00</h5>
                         <p>Honda CBR</p>
                         <button className="btn btn-dark">Add to Cart</button>
@@ -375,9 +399,28 @@ function LandingPage() {
                 </div>
             </section>
 
+            {/* Store Location Section */}
+            <section className="store-section">
+                <div className="glassmorph store-container" data-aos="fade-up">
+                    <h2>Check our Locations</h2>
+                    <p 
+                        id="changing-text"
+                        style={{
+                            opacity: fade ? 1 : 0, 
+                            transition: 'opacity 1s ease-in-out',
+                        }}
+                    >
+                        {currentText}
+                    </p>
+                    <a href="nextpage.html" className="btn btn-success">Check now!!!</a>
+                </div>
+            </section>
+
+
+
 
         {/*HR SOLID RED*/}
-        <div className='mt-5' data-aos="fade-up" style={{ height: '5px', backgroundColor: 'red', width: '100%' }}></div>
+        <div data-aos="fade-up" style={{ height: '5px', backgroundColor: 'red', width: '100%' }}></div>
 
         {/*FEATURE OF PAYMENT*/}
         <section className="payment-feature mt-5">
@@ -399,7 +442,7 @@ function LandingPage() {
 
             {/* Footer */}
             <footer className="bg-black text-white mt-5">
-                <div className="container">
+                <div className="container" style={{backgroundColor: 'black'}}>
                     <div className="row">
                         {/* First Column: Logo and Customer Support */}
                         <div className="col-md-3 mt-5">

@@ -291,14 +291,7 @@
   flex-wrap: wrap;
 }
 
-.feedback-item {
-  background-color: #f0f0f0;
-  border-radius: 10px;
-  padding: 15px;
-  max-width: 300px;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
+
 
 .feedback-text {
   font-size: 1rem;
@@ -399,4 +392,75 @@
       }
     }
 
+    /* Store Location */
+    .glassmorph {
+      backdrop-filter: blur(15px) saturate(120%);
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+  }
 
+  .glassmorph:hover {
+      background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Store Section */
+  .store-section {
+    padding: 50px;
+      display: flex;
+      align-items: flex-start; /* Align content to the top */
+      justify-content: center;
+      padding-top: 2rem; /* Add some padding at the top */
+  }
+
+  .store-container {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+  }
+
+  .store-container h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+  }
+
+  .store-container p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+  }
+
+  .glassmorph .btn {
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+  }
+
+  .btn-custom:hover {
+      background-color: #0056b3;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+      .store-section {
+          flex-direction: column;
+          height: auto;
+      }
+
+      .store-container {
+          padding: 1rem;
+      }
+
+      .store-container h2 {
+          font-size: 2.5rem;
+      }
+
+      .btn-custom {
+          font-size: 16px;
+          padding: 10px 20px;
+      }
+  }
